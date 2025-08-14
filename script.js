@@ -1,5 +1,5 @@
 /* =========================================
-   ハンバーガーメニュー＋スクロール半透明
+   ハンバーガーメニュー ＋スクロール半透明
    ========================================= */
 document.addEventListener('DOMContentLoaded', () => {
   const navbar   = document.querySelector('.navbar');
