@@ -11,4 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
       overlay.style.display = 'none';
     });
   });
+  document.querySelector('.menu-close').addEventListener('click', function() {
+  document.querySelector('.menu-overlay').classList.remove('active');
+});
 });
