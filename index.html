@@ -7,12 +7,30 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>パレット・ドゥ・パリ</title>
+<title>旅のしおりログイン</title>
 <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Meow+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+  <!-- パスワード保護機能（最終公開時に有効化）
+<script>
+function checkPassword() {
+    var pass = prompt("パスワードを入力してください：", "");
+    if (pass === "ここにパスワード") {
+        return true;
+    } else {
+        return false;
+    }
+}
+</script>
+-->
 </head>
 <body>
-
+<!--
+<script>
+    if (!checkPassword()) {
+        document.body.innerHTML = "<h1>パスワードが異なります</h1>";
+    }
+</script>
+-->
 <!-- ナビゲーション -->
 <nav class="navbar">
   <div class="logo">Palette de Paris</div>
@@ -23,6 +41,7 @@
 
 <!-- ハンバーガーオーバーレイ -->
 <div class="overlay-menu">
+  <button class="menu-close">×</button>
   <ul>
     <li><a href="#schedule">日程表</a></li>
     <li><a href="#info">情報リスト</a></li>
