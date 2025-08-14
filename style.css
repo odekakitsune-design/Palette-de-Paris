@@ -1,3 +1,4 @@
+/* ===== 全体設定 ===== */
 body {
   margin: 0;
   font-family: 'Kiwi Maru', serif;
@@ -5,6 +6,7 @@ body {
   color: #333;
 }
 
+/* ===== ナビゲーションバー ===== */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -27,6 +29,7 @@ body {
   gap: 0.3rem;
 }
 
+/* ===== メニューオーバーレイ ===== */
 .overlay-menu {
   position: fixed;
   top: 0; left: 0;
@@ -54,6 +57,7 @@ body {
   color: #333;
 }
 
+/* ===== トップビュー（Heroセクション） ===== */
 .hero {
   position: relative;
   text-align: center;
@@ -74,18 +78,27 @@ body {
   text-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
+/* ===== H1タイトルとサブタイトル（3. CSS修正） ===== */
 .hero-text h1 {
   font-size: 2rem;
   margin: 0;
+  position: relative;
+  display: inline-block;
 }
 
 .hero-text .subtitle {
   font-family: 'Meow Script', cursive;
   font-size: 1.5rem;
   color: #c0392b;
-  margin-left: 0.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
 }
 
+/* ===== 日程表 ===== */
 .schedule-table {
   width: 100%;
   border-collapse: collapse;
@@ -98,6 +111,7 @@ body {
   text-align: left;
 }
 
+/* ===== 各セクション共通 ===== */
 section {
   padding: 1.5rem;
   background: #fff;
