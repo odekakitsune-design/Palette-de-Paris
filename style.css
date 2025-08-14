@@ -316,3 +316,59 @@ body{
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* =========================================
+   ナビゲーション・ヒーロー調整（追加分）
+   ========================================= */
+
+/* ナビバー背景の微調整（くすみブルーをやや明るく） */
+.navbar {
+    background: rgba(122, 138, 161, 0.95);
+    backdrop-filter: blur(6px);
+}
+
+/* ハンバーガーボタンの余白感アップ */
+.hamburger {
+    gap: 6px;
+    padding: 0.6rem 0.8rem;
+    border-radius: 4px; /* 角丸を少なめに */
+}
+
+/* オーバーレイメニューの背景色をナビバーと同じにして白文字に */
+.menu-overlay {
+    background: rgba(122, 138, 161, 0.98);
+    color: #fff;
+}
+
+/* オーバーレイメニューのリンクを白文字に */
+.menu-overlay a {
+    color: #fff;
+}
+
+/* ロゴにパレットアイコン（Font Awesome使用想定）を追加表示用 */
+.logo::before {
+    content: "\f53f"; /* fa-palette アイコン */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 0.4rem;
+}
+
+/* ヒーローサブタイトルをワインレッド系＆薄い影付きに */
+.hero-subtitle {
+    color: #8b3a4b; /* くすんだワインレッド */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+    position: relative;
+    display: inline-block;
+}
+
+/* ヒーロータイトルを細めフォントにして洗練感 */
+.hero-title {
+    font-weight: 400;
+}
+
+/* ヒーロータグラインの余白感演出 */
+.hero-tagline {
+    letter-spacing: 0.08em;
+    margin-top: 0.5rem;
+}
+
