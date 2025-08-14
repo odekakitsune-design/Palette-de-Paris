@@ -1,0 +1,79 @@
+body {
+  font-family: "Hiragino Sans", "Helvetica Neue", sans-serif;
+  margin: 0;
+  background: #faf8f6;
+  color: #333;
+}
+
+/* パスワード画面 */
+#password-screen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #c4b7a6, #a8c3d1, #d9d0c1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.password-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+}
+.password-box input {
+  padding: 0.5rem;
+  width: 80%;
+  margin-bottom: 1rem;
+}
+button {
+  padding: 0.5rem 1rem;
+  background: #a8c3d1;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.error {
+  color: red;
+}
+
+/* ヘッダーとナビ */
+header {
+  background: #d9d0c1;
+  padding: 1rem;
+  text-align: center;
+}
+header h1 {
+  margin: 0;
+}
+header nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #333;
+}
+
+/* セクション */
+section {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ccc;
+}
+h2 {
+  border-left: 5px solid #a8c3d1;
+  padding-left: 0.5rem;
+}
+
+/* 表 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+}
+
+/* 印刷用調整 */
+@media print {
+  #password-screen { display: none !important; }
+  header nav { display: none; }
+}
