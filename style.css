@@ -1,75 +1,106 @@
-/* Google Fonts反映 */
 body {
-    font-family: 'Kiwi Maru', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    background-color: #faf8f5;
+  margin: 0;
+  font-family: 'Kiwi Maru', serif;
+  background: #f9f8f7;
+  color: #333;
 }
 
-/* ナビゲーション */
 .navbar {
-    background-color: #b6c5d5; /* くすみブルー */
-    padding: 10px 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-.navbar ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 0;
-}
-.navbar li {
-    margin: 5px 15px;
-}
-.navbar a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
 }
 
-/* ヒーローセクション */
+.logo {
+  font-family: 'Meow Script', cursive;
+  font-size: 1.5rem;
+}
+
+.hamburger {
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.overlay-menu {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.overlay-menu ul li {
+  margin: 1rem 0;
+}
+
+.overlay-menu ul li a {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #333;
+}
+
 .hero {
-    background: url("images/hero.jpg") center/cover no-repeat;
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-.hero-text h1 {
-    font-family: 'Meow Script', cursive;
-    font-size: 3rem;
-    color: white;
-    margin: 0;
-}
-.hero-text p {
-    font-size: 1.2rem;
-    color: white;
-}
-.hero-text .date {
-    display: block;
-    margin-top: 10px;
-    color: #f7e7d3; /* ベージュ */
-    font-weight: bold;
+  position: relative;
+  text-align: center;
 }
 
-/* 概要 */
-.overview {
-    max-width: 768px;
-    margin: 50px auto;
-    padding: 0 15px;
+.hero img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
-.overview h2 {
-    font-size: 1.8rem;
-    border-bottom: 2px solid #c99a9a; /* くすみピンク */
-    padding-bottom: 5px;
-    margin-bottom: 20px;
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
-.overview p {
-    line-height: 1.6;
+
+.hero-text h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.hero-text .subtitle {
+  font-family: 'Meow Script', cursive;
+  font-size: 1.5rem;
+  color: #c0392b;
+  margin-left: 0.5rem;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.schedule-table th, .schedule-table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+section {
+  padding: 1.5rem;
+  background: #fff;
+  margin-bottom: 1rem;
+  border-radius: 8px;
 }
