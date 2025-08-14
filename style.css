@@ -1,79 +1,75 @@
+/* Google Fonts反映 */
 body {
-  font-family: "Hiragino Sans", "Helvetica Neue", sans-serif;
-  margin: 0;
-  background: #faf8f6;
-  color: #333;
+    font-family: 'Kiwi Maru', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #faf8f5;
 }
 
-/* パスワード画面 */
-#password-screen {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #c4b7a6, #a8c3d1, #d9d0c1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ナビゲーション */
+.navbar {
+    background-color: #b6c5d5; /* くすみブルー */
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
-.password-box {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  text-align: center;
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
 }
-.password-box input {
-  padding: 0.5rem;
-  width: 80%;
-  margin-bottom: 1rem;
+.navbar li {
+    margin: 5px 15px;
 }
-button {
-  padding: 0.5rem 1rem;
-  background: #a8c3d1;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.error {
-  color: red;
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
 }
 
-/* ヘッダーとナビ */
-header {
-  background: #d9d0c1;
-  padding: 1rem;
-  text-align: center;
+/* ヒーローセクション */
+.hero {
+    background: url("images/hero.jpg") center/cover no-repeat;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
-header h1 {
-  margin: 0;
+.hero-text h1 {
+    font-family: 'Meow Script', cursive;
+    font-size: 3rem;
+    color: white;
+    margin: 0;
 }
-header nav a {
-  margin: 0 1rem;
-  text-decoration: none;
-  color: #333;
+.hero-text p {
+    font-size: 1.2rem;
+    color: white;
 }
-
-/* セクション */
-section {
-  padding: 1rem 2rem;
-  border-bottom: 1px solid #ccc;
-}
-h2 {
-  border-left: 5px solid #a8c3d1;
-  padding-left: 0.5rem;
-}
-
-/* 表 */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-th, td {
-  border: 1px solid #ccc;
-  padding: 0.5rem;
+.hero-text .date {
+    display: block;
+    margin-top: 10px;
+    color: #f7e7d3; /* ベージュ */
+    font-weight: bold;
 }
 
-/* 印刷用調整 */
-@media print {
-  #password-screen { display: none !important; }
-  header nav { display: none; }
+/* 概要 */
+.overview {
+    max-width: 768px;
+    margin: 50px auto;
+    padding: 0 15px;
+}
+.overview h2 {
+    font-size: 1.8rem;
+    border-bottom: 2px solid #c99a9a; /* くすみピンク */
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+.overview p {
+    line-height: 1.6;
 }
