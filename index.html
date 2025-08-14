@@ -42,38 +42,43 @@
   </script>
   -->
 
-  <!-- ===== 固定ナビ（SPファースト） ===== -->
-  <nav class="navbar">
-    <div class="logo">Palette de Paris</div>
-    <button class="hamburger" aria-label="メニューを開く">
-      <span class="icon">☰</span> <span class="label">MENU</span>
-    </button>
-  </nav>
-
-  <!-- ===== 全画面オーバーレイメニュー ===== -->
-  <div class="menu-overlay" aria-hidden="true">
-    <button class="menu-close" aria-label="メニューを閉じる">× <span>Close</span></button>
-    <ul class="menu-list">
-      <li><a href="#schedule">日程表</a></li>
-      <li><a href="#info">情報リスト</a></li>
-      <li><a href="#map">マップ</a></li>
-      <li><a href="#tips">お役立ち情報</a></li>
-      <li><a href="#contact">連絡先</a></li>
-    </ul>
+<!-- ナビゲーション -->
+<header class="navbar">
+  <div class="logo">
+    <i class="fas fa-palette"></i> <!-- 🎨 パレットアイコン追加 -->
+    Palette de Paris
   </div>
+  <!-- 既存クラスそのまま -->
+  <button class="hamburger" aria-label="メニューを開く">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
 
-  <!-- ===== ヒーロー（トップビュー） ===== -->
-  <header class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-text">
-      <!-- h1：1行で収まる想定／サブタイトルをかぶせる -->
-      <h1 class="hero-title">
-        パレット・ドゥ・パリ
-        <span class="hero-subtitle">Palette de Paris</span>
-      </h1>
-      <p class="hero-tagline">～私色のパリを楽しむ旅～</p>
+<!-- オーバーレイメニュー -->
+<nav class="menu-overlay">
+  <button class="menu-close" aria-label="メニューを閉じる">&times;</button>
+  <ul>
+    <li><a href="#schedule"><i class="fas fa-calendar-alt"></i> 日程表</a></li>
+    <li><a href="#info"><i class="fas fa-list"></i> 情報リスト</a></li>
+    <li><a href="#map"><i class="fas fa-map-marker-alt"></i> マップ</a></li>
+    <li><a href="#tips"><i class="fas fa-lightbulb"></i> お役立ち情報</a></li>
+    <li><a href="#contact"><i class="fas fa-phone"></i> 連絡先</a></li>
+  </ul>
+</nav>
+
+<!-- ヒーローセクション -->
+<section class="hero">
+  <div class="hero-content">
+    <!-- 元のh1とpはそのまま。位置調整用ラッパーだけ追加 -->
+    <div class="hero-title-wrapper">
+      <span class="hero-subtitle">Palette de Paris</span>
+      <h1 class="hero-title">パレット・ドゥ・パリ</h1>
     </div>
-  </header>
+    <p class="hero-tagline">～私色のパリを楽しむ旅～</p>
+  </div>
+</section>
 
   <!-- ===== コンテナ（SPは全幅／PCは中央 768px） ===== -->
   <main class="container">
