@@ -1,134 +1,51 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-<title>パレット・ドゥ・パリ ～私色のパリを楽しむ旅～</title>
-<link rel="stylesheet" href="style.css">
-<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パレット・ドゥ・パリ ～私色のパリを楽しむ旅～</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=Meow+Script&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- noindex設定 -->
+    <meta name="robots" content="noindex">
 </head>
 <body>
 
-<!-- パスワード画面 -->
-<div id="password-screen">
-  <div class="password-box">
-    <h2>パレット・ドゥ・パリ</h2>
-    <p>パスワードを入力してください</p>
-    <input type="password" id="password-input" placeholder="Password">
-    <button onclick="checkPassword()">Enter</button>
-    <p id="error-message" class="error"></p>
-  </div>
-</div>
-
-<!-- メインコンテンツ -->
-<div id="main-content" style="display:none;">
-
-  <!-- ヘッダー -->
-  <header>
-    <h1>パレット・ドゥ・パリ<br><span>～私色のパリを楽しむ旅～</span></h1>
-    <nav>
-      <a href="#spots">観光地</a>
-      <a href="#schedule">日程表</a>
-      <a href="#info">パリ基本情報</a>
-      <a href="#notes">注意事項</a>
-      <a href="#members">メンバー紹介</a>
+    <!-- ナビ -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#top">トップ</a></li>
+            <li><a href="#schedule">日程表</a></li>
+            <li><a href="#spots">観光地</a></li>
+            <li><a href="#hotel">ホテル</a></li>
+            <li><a href="#food">食事</a></li>
+            <li><a href="#info">基本情報</a></li>
+            <li><a href="#tips">注意事項</a></li>
+            <li><a href="#checklist">持ち物</a></li>
+            <li><a href="#map">地図</a></li>
+            <li><a href="#contact">連絡先</a></li>
+        </ul>
     </nav>
-  </header>
 
-  <!-- 主な観光地 -->
-  <section id="spots">
-    <h2><i class="fas fa-map-marker-alt"></i> 主な観光地</h2>
-    <ul>
-      <li>エッフェル塔</li>
-      <li>ルーブル美術館</li>
-      <li>モンマルトルの丘</li>
-      <li>オルセー美術館</li>
-      <li>モンサンミッシェル（遠足）</li>
-    </ul>
-  </section>
+    <!-- ヒーローセクション -->
+    <section id="top" class="hero">
+        <div class="hero-text">
+            <h1>パレット・ドゥ・パリ</h1>
+            <p>～私色のパリを楽しむ旅～</p>
+            <span class="date">2024年9月29日〜10月4日</span>
+        </div>
+    </section>
 
-  <!-- 日程表 -->
-  <section id="schedule">
-    <h2><i class="fas fa-calendar-alt"></i> 暫定日程表</h2>
-    <table>
-      <tr>
-        <th>日付</th><th>予定</th>
-      </tr>
-      <tr>
-        <td>9/29(日)</td>
-        <td>羽田 → パリ着、ホテルチェックイン、夕食</td>
-      </tr>
-      <tr>
-        <td>9/30(月)</td>
-        <td>市内観光ツアー、ギャラリーラファイエット</td>
-      </tr>
-      <tr>
-        <td>10/1(火)</td>
-        <td>ルーブル美術館＋ベルサイユ宮殿</td>
-      </tr>
-      <tr>
-        <td>10/2(水)</td>
-        <td>モンサンミッシェル日帰り</td>
-      </tr>
-      <tr>
-        <td>10/3(木)</td>
-        <td>朝市、オルセー、特別ディナー</td>
-      </tr>
-      <tr>
-        <td>10/4(金)</td>
-        <td>パリ → 羽田</td>
-      </tr>
-    </table>
-  </section>
+    <!-- 概要 -->
+    <section class="overview">
+        <h2>旅の概要</h2>
+        <p><strong>期間：</strong>2024年9月29日〜10月4日（5泊6日）</p>
+        <p><strong>メンバー：</strong>全員女性（30代～60代）</p>
+        <p><strong>コンセプト：</strong>安全性を確保しつつ、美術・文化と観光名所をバランスよく楽しむ旅</p>
+    </section>
 
-  <!-- パリ基本情報 -->
-  <section id="info">
-    <h2><i class="fas fa-info-circle"></i> パリ基本情報</h2>
-    <ul>
-      <li>時差：日本 -7時間</li>
-      <li>10月初旬の気温：最高18℃ / 最低10℃（体感はやや寒め）</li>
-      <li>通貨：ユーロ (€) / 1€ ≈ 160円（2025年8月時点）</li>
-      <li>基本フランス語：<br>
-        Bonjour（ボンジュール）= こんにちは<br>
-        Merci（メルシー）= ありがとう
-      </li>
-    </ul>
-  </section>
-
-  <!-- 注意事項 -->
-  <section id="notes">
-    <h2><i class="fas fa-exclamation-triangle"></i> 注意事項</h2>
-    <ul>
-      <li>スリ・置き引きに注意（特に観光地・バス内）</li>
-      <li>夜間の単独行動は避ける</li>
-      <li>パスポート・貴重品は常に身につける</li>
-    </ul>
-  </section>
-
-  <!-- メンバー紹介 -->
-  <section id="members">
-    <h2><i class="fas fa-users"></i> メンバー紹介</h2>
-    <ul>
-      <li>私（30代）：美術・文化好き、計画担当</li>
-      <li>母（60代）：自由人、インスタ映え重視</li>
-      <li>幼馴染の母：おしゃべり好き、食べ歩き担当</li>
-      <li>母の友人：写真好き、観光地巡り派</li>
-    </ul>
-  </section>
-
-</div>
-
-<script>
-function checkPassword() {
-  const input = document.getElementById('password-input').value;
-  if (input === 'paris2025') {
-    document.getElementById('password-screen').style.display = 'none';
-    document.getElementById('main-content').style.display = 'block';
-  } else {
-    document.getElementById('error-message').textContent = 'パスワードが違います';
-  }
-}
-</script>
 </body>
 </html>
