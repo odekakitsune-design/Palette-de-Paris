@@ -1,17 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector('.hamburger');
-  const overlay = document.querySelector('.overlay-menu');
+  const overlay = document.querySelector('.menu-overlay');
+  const closeBtn = document.querySelector('.menu-close');
 
   hamburger.addEventListener('click', () => {
-    overlay.style.display = (overlay.style.display === 'flex') ? 'none' : 'flex';
+    overlay.classList.add('active');
   });
 
-  document.querySelectorAll('.overlay-menu a').forEach(link => {
+  closeBtn.addEventListener('click', () => {
+    overlay.classList.remove('active');
+  });
+
+  document.querySelectorAll('.menu-overlay a').forEach(link => {
     link.addEventListener('click', () => {
-      overlay.style.display = 'none';
+      overlay.classList.remove('active');
     });
   });
-  document.querySelector('.menu-close').addEventListener('click', function() {
-  document.querySelector('.menu-overlay').classList.remove('active');
-});
 });
