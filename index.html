@@ -96,7 +96,7 @@
         <div class="card">
           <div class="card-icon"><i class="fa-solid fa-palette" fa-fw"></i></div>
           <div class="card-title">コンセプト</div>
-          <div class="card-body">パリを全部乗せ×カラフルな私たち</div>
+          <div class="card-body">パリを全部乗せ<br>×<br>カラフルな私たち</div>
         </div>
       </div>
     </section>
@@ -135,10 +135,10 @@
         </tbody>
       </table> -->
 <!-- ▼ 新・日程タブ＆タイムライン（差し替え用。旧テーブルは残しつつ非表示） -->
-<div id="schedule-app" class="schedule-app">
-  <div class="schedule-tabs" role="tablist" aria-label="日付タブ"></div>
-  <div class="schedule-panels"></div>
-</div>
+<section class="timeline-section">
+  <div id="tabs" class="tabs"></div>
+  <div id="panels" class="panels"></div>
+</section>
 <!-- ▲ 新・日程タブ＆タイムライン -->
 
     </section>
@@ -154,6 +154,7 @@
         <div class="hotel-image"><img src="images/hotel.jpg" alt="ホテルの外観"></div>
         <p>住所：14 Rue de l'Arrivée, 75014 Paris, France</p>
         <p>アクセス：メトロ〇〇線 〇〇駅から徒歩5分</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5252.493488953049!2d2.323973!3d48.834432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671b5b139f755%3A0xb374f9dbcf4a15ca!2sH%C3%B4tel%20Restaurant%20Campanile%20Paris%20Montparnasse!5e0!3m2!1sja!2sjp!4v1755244931878!5m2!1sja!2sjp" width="100%" height=150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <p>電話：+33-1-23-45-67-89</p>
         <p>Wi-Fi：無料</p>
         <p>朝食：7:00～10:00（ビュッフェ形式）</p>
@@ -243,10 +244,7 @@
       <h2 class="section-title"><i class="fa-solid fa-map-location-dot" fa-fw"></i> マップ</h2>
       <div class="card">
         <div class="map-wrap">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!..."
-            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
-          </iframe>
+
         </div>
       </div>
     </section>
@@ -264,6 +262,7 @@
   </main>
 
   <!-- ===== JS ===== -->
-  <script src="script.js"></script>
+<script src="days-data.js"></script><!-- 日程データ -->
+<script src="script.js" defer></script>
 </body>
 </html>

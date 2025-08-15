@@ -318,91 +318,72 @@ border-bottom:3px dotted;
 /* =========================================
    日程タブ＆タイムライン（新規追加／上書きなし）
    ========================================= */
-
-/* カラーバリエーション（既存変数が無い場合の安全策としてフォールバック付き） */
-.schedule-app{
-  --ico-flight: var(--dullblue, #7a8aa1);
-  --ico-taxi:   var(--wine,     #7b3f4a);
-  --ico-train:  #4caf50;
-  --ico-bus:    #2196f3;
-  --ico-walk:   #8bc34a;
-  --ico-hotel:  #9c27b0;
-  --ico-food:   #ff9800;
-  --ico-sight:  #009688;
-  --ico-shop:   #e91e63;
-  --ico-link:   #607d8b;
+/* タイムライン全体 */
+.timeline-section {
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
 }
 
-/* タブ（横スクロール禁止＝折り返し） */
-.schedule-tabs{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* SPは3列で自動折返し＝横スクロール無し */
-  gap: 8px;
-  padding: 8px 0 0;
+/* タブ部分 */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
 }
-@media (min-width: 768px){
-  .schedule-tabs{ grid-template-columns: repeat(6, 1fr); }
-}
-.schedule-tabs button{
-  appearance: none;
-  border: 1px solid rgba(0,0,0,.08);
-  background: var(--alt, #f7f9fb);
-  padding: 10px 8px;
-  border-radius: 10px;
-  font-weight: 600;
+.tabs button {
+  background: #eee;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0.2rem;
+  border-radius: 6px;
   cursor: pointer;
 }
-.schedule-tabs button[aria-selected="true"]{
-  background: var(--card, #fff);
-  border-color: rgba(0,0,0,.15);
-  box-shadow: 0 1px 6px rgba(0,0,0,.06);
+.tabs button[aria-selected="true"] {
+  background: #333;
+  color: #fff;
 }
 
 /* パネル */
-.schedule-panels{ margin-top: 10px; }
-.schedule-panel{ display: none; }
-.schedule-panel.active{ display: block; }
-
-/* その日のテーマ */
-.day-theme{
-  font-weight: 700;
-  margin: 6px 0 12px;
-  font-size: 1.05rem;
+.panels > div {
+  display: none;
+}
+.panels > div.active {
+  display: block;
 }
 
-/* タイムライン（横スクロール無し：2カラム固定＋自動改行） */
-.timeline{
+/* タイムラインアイテム */
+.timeline {
   display: grid;
-  grid-template-columns: 90px 1fr;
-  gap: 10px 12px;
-  border-left: 2px solid rgba(0,0,0,.08);
-  padding-left: 12px;
+  grid-template-columns: 70px 40px 1fr;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
 }
-.timeline-time{
-  font-weight: 700;
-  color: #333;
+.timeline .time {
+  font-weight: bold;
 }
-.timeline-item{
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  line-height: 1.5;
-  word-break: break-word;
-  overflow-wrap: anywhere;
+.timeline .icon {
+  font-size: 1.2rem;
+  text-align: center;
 }
-.timeline-item i{ margin-top: 2px; }
+.timeline .event {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
 
-/* アイコン色分け（種類ごと） */
-.timeline-item[data-type="flight"]   i{ color: var(--ico-flight); }
-.timeline-item[data-type="taxi"]     i{ color: var(--ico-taxi); }
-.timeline-item[data-type="train"]    i{ color: var(--ico-train); }
-.timeline-item[data-type="bus"]      i{ color: var(--ico-bus); }
-.timeline-item[data-type="walk"]     i{ color: var(--ico-walk); }
-.timeline-item[data-type="hotel"]    i{ color: var(--ico-hotel); }
-.timeline-item[data-type="food"]     i{ color: var(--ico-food); }
-.timeline-item[data-type="sight"]    i{ color: var(--ico-sight); }
-.timeline-item[data-type="shopping"] i{ color: var(--ico-shop); }
-.timeline-item[data-type="link"]     i{ color: var(--ico-link); }
+/* 移動手段カラー */
+.icon.flight { color: #1e90ff; }   /* 青 */
+.icon.taxi,
+.icon.train,
+.icon.bus,
+.icon.walk { color: #ff9800; }    /* オレンジ系統で統一 */
+.icon.hotel { color: #795548; }   /* 茶系 */
+.icon.food { color: #e91e63; }    /* ピンク */
+.icon.sight { color: #4caf50; }   /* 緑 */
+.icon.shop { color: #9c27b0; }    /* 紫 */
+.icon.link { color: #607d8b; }    /* 青みグレー */
 
 /* =========================================
    マップ
