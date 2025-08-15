@@ -10,7 +10,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>パレット・ドゥ・パリ ～私色のパリを楽しむ旅～</title>
 
   <!-- ===== フォント ===== -->
@@ -42,7 +42,7 @@
   </script>
   -->
 
-  <!-- ===== 固定ナビ（SPファースト） ===== -->
+  <!-- ===== 固定ナビ（ SPファースト） ===== -->
   <nav class="navbar">
     <div class="logo"><img src="images/paint.png" alt="トップビュー">Palette de Paris</div>
     <button class="hamburger" aria-label="メニューを開く">
@@ -55,11 +55,11 @@
     <button class="menu-close" aria-label="メニューを閉じる">× <span>Close</span></button>
     <ul class="menu-list">
       <li class="menu-ttl">Menu</li>
-      <li><a href="#schedule"><i class="fa-solid fa-calendar-days"></i>日程表</a></li>
-      <li><a href="#info"><i class="fa-solid fa-info-circle"></i>情報リスト</a></li>
-      <li><a href="#map"><i class="fa-solid fa-map-location-dot"></i>マップ</a></li>
-      <li><a href="#tips"><i class="fa-solid fa-lightbulb"></i>お役立ち情報</a></li>
-      <li><a href="#contact"><i class="fa-solid fa-envelope"></i> 連絡先</a></li>
+      <li><a href="#schedule"><i class="fa-solid fa-calendar-days" fa-fw"></i>日程表</a></li>
+      <li><a href="#info"><i class="fa-solid fa-info-circle" fa-fw"></i>情報リスト</a></li>
+      <li><a href="#map"><i class="fa-solid fa-map-location-dot" fa-fw"></i>マップ</a></li>
+      <li><a href="#tips"><i class="fa-solid fa-lightbulb" fa-fw"></i>お役立ち情報</a></li>
+      <li><a href="#contact"><i class="fa-solid fa-envelope" fa-fw"></i> 連絡先</a></li>
     </ul>
   </div>
 
@@ -69,8 +69,8 @@
     <div class="hero-text">
       <!-- h1：1行で収まる想定／サブタイトルをかぶせる -->
       <h1 class="hero-title">
-        パレット・ドゥ・パリ
         <span class="hero-subtitle">Palette de Paris</span>
+        <span class="hero-title">パレット・ドゥ・パリ</span>
       </h1>
       <p class="hero-tagline">～私色のパリを楽しむ旅～</p>
     </div>
@@ -81,30 +81,30 @@
 
     <!-- ===== 旅の概要（カード風） ===== -->
     <section id="overview" class="section">
-      <h2 class="section-title"><i class="fa-regular fa-calendar"></i> 旅の概要</h2>
+      <h2 class="section-title"><i class="fa-regular fa-calendar" fa-fw"></i> 旅の概要</h2>
       <div class="cards overview-cards">
         <div class="card">
-          <div class="card-icon"><i class="fa-regular fa-clock"></i></div>
+          <div class="card-icon"><i class="fa-regular fa-clock" fa-fw"></i></div>
           <div class="card-title">期間</div>
-          <div class="card-body">（例）9/29 ～ 10/4</div>
+          <div class="card-body">9/29 ～ 10/5</div>
         </div>
         <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-user-group"></i></div>
+          <div class="card-icon"><i class="fa-solid fa-user-group" fa-fw"></i></div>
           <div class="card-title">メンバー</div>
           <div class="card-body">女性4名</div>
         </div>
         <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-palette"></i></div>
+          <div class="card-icon"><i class="fa-solid fa-palette" fa-fw"></i></div>
           <div class="card-title">コンセプト</div>
-          <div class="card-body">美術×写真映え×安心動線</div>
+          <div class="card-body">パリを全部乗せ×カラフルな私たち</div>
         </div>
       </div>
     </section>
 
     <!-- ===== 日程表（横スクロールなし） ===== -->
     <section id="schedule" class="section">
-      <h2 class="section-title"><i class="fa-regular fa-note-sticky"></i> 日程表</h2>
-      <table class="schedule-table">
+      <h2 class="section-title"><i class="fa-regular fa-note-sticky" fa-fw"></i> 日程表</h2>
+      <!-- <table class="schedule-table">
         <thead>
           <tr>
             <th>日付</th>
@@ -133,27 +133,43 @@
             <td>日本語ガイド</td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
+<!-- ▼ 新・日程タブ＆タイムライン（差し替え用。旧テーブルは残しつつ非表示） -->
+<div id="schedule-app" class="schedule-app">
+  <div class="schedule-tabs" role="tablist" aria-label="日付タブ"></div>
+  <div class="schedule-panels"></div>
+</div>
+<!-- ▲ 新・日程タブ＆タイムライン -->
+
     </section>
 
     <!-- ===== 情報リスト ===== -->
     <section id="info" class="section">
-      <h2 class="section-title"><i class="fa-regular fa-rectangle-list"></i> 情報リスト</h2>
+      <h2 class="section-title"><i class="fa-regular fa-rectangle-list" fa-fw"></i> 情報リスト</h2>
 
-      <h3 class="sub-title"><i class="fa-solid fa-hotel"></i> ホテル情報</h3>
+      <h3 class="sub-title"><i class="fa-solid fa-hotel" fa-fw"></i> ホテル情報</h3>
       <div class="info-box">
-        <p>カンパニール パリ 14 - メーヌ モンパルナス ホテル</p>
-        <p>住所：〇〇通り123番地 パリ</p>
+        <p>カンパニール パリ 14 - メーヌ モンパルナス ホテル
+        <a href="#contacthttps://paris-14-maine-montparnasse.campanile.com/fr-fr/?utm_content=partoo&utm_medium=seo-bgp&utm_source=google&sr=SEO_GOOGLE#Restauration">Hôtel Restaurant Campanile Paris Montparnasse</a></p>
+        <div class="hotel-image"><img src="images/hotel.jpg" alt="ホテルの外観"></div>
+        <p>住所：14 Rue de l'Arrivée, 75014 Paris, France</p>
+        <p>アクセス：メトロ〇〇線 〇〇駅から徒歩5分</p>
+        <p>電話：+33-1-23-45-67-89</p>
+        <p>Wi-Fi：無料</p>
+        <p>朝食：7:00～10:00（ビュッフェ形式）</p>
+        <p>備考：エレベーターあり、禁煙ルーム</p>
+        <p>※写真はイメージです。</p>
+        
       </div>
-
-      <h3 class="sub-title"><i class="fa-solid fa-camera"></i> 観光地リスト</h3>
+<div class="info-box">
+      <h3 class="sub-title"><i class="fa-solid fa-camera" fa-fw"></i> 観光地リスト</h3>
       <ul class="bullet-list">
         <li>エッフェル塔</li>
         <li>ノートルダム大聖堂</li>
         <li>モンマルトルの丘</li>
       </ul>
 
-      <h3 class="sub-title"><i class="fa-solid fa-utensils"></i> お食事リスト</h3>
+      <h3 class="sub-title"><i class="fa-solid fa-utensils" fa-fw"></i> お食事リスト</h3>
       <ul class="bullet-list">
         <li>Bistro A — ワインとチーズ</li>
         <li>Café B — クレープとガレット</li>
@@ -163,7 +179,7 @@
 
     <!-- ===== スポット紹介（カード型） ===== -->
     <section id="spots" class="section alt">
-      <h2 class="section-title"><i class="fa-regular fa-image"></i> スポット紹介</h2>
+      <h2 class="section-title"><i class="fa-regular fa-image" fa-fw"></i> スポット紹介</h2>
       <div class="cards spot-cards">
         <div class="card">
           <div class="card-media" aria-hidden="true"></div>
@@ -185,7 +201,7 @@
 
     <!-- ===== 特別イベント紹介 ===== -->
     <section id="special" class="section">
-      <h2 class="section-title"><i class="fa-solid fa-star"></i> 特別イベント</h2>
+      <h2 class="section-title"><i class="fa-solid fa-star" fa-fw"></i> 特別イベント</h2>
       <div class="card special-card">
         <div class="card-media wide" aria-hidden="true"></div>
         <div class="card-title">スペシャルディナー</div>
@@ -195,26 +211,26 @@
 
     <!-- ===== パリ基本情報 ===== -->
     <section id="tips" class="section alt">
-      <h2 class="section-title"><i class="fa-solid fa-circle-info"></i> お役立ち情報</h2>
+      <h2 class="section-title"><i class="fa-solid fa-circle-info" fa-fw"></i> お役立ち情報</h2>
 
-      <h3 class="sub-title"><i class="fa-regular fa-clock"></i> パリ基本情報</h3>
+      <h3 class="sub-title"><i class="fa-regular fa-clock" fa-fw"></i> パリ基本情報</h3>
       <div class="grid basic-info">
-        <div class="grid-item"><i class="fa-regular fa-clock"></i> 時差：日本より約 -7時間（夏時間）</div>
-        <div class="grid-item"><i class="fa-solid fa-temperature-half"></i> 10月初旬の気温：概ね涼しい</div>
-        <div class="grid-item"><i class="fa-solid fa-euro-sign"></i> 通貨：€（ユーロ）</div>
-        <div class="grid-item"><i class="fa-solid fa-language"></i> こんにちは：Bonjour（ボンジュール）</div>
-        <div class="grid-item"><i class="fa-solid fa-language"></i> ありがとう：Merci（メルシー）</div>
-        <div class="grid-item"><i class="fa-solid fa-language"></i> 英語可？：観光地は通じやすい</div>
+        <div class="grid-item"><i class="fa-regular fa-clock" fa-fw"></i> 時差：日本より約 -7時間（夏時間）</div>
+        <div class="grid-item"><i class="fa-solid fa-temperature-half" fa-fw"></i> 10月初旬の気温：概ね涼しい</div>
+        <div class="grid-item"><i class="fa-solid fa-euro-sign" fa-fw"></i> 通貨：€（ユーロ）</div>
+        <div class="grid-item"><i class="fa-solid fa-language" fa-fw"></i> こんにちは：Bonjour（ボンジュール）</div>
+        <div class="grid-item"><i class="fa-solid fa-language" fa-fw"></i> ありがとう：Merci（メルシー）</div>
+        <div class="grid-item"><i class="fa-solid fa-language" fa-fw"></i> 英語可？：観光地は通じやすい</div>
       </div>
 
-      <h3 class="sub-title"><i class="fa-solid fa-triangle-exclamation"></i> 注意事項</h3>
+      <h3 class="sub-title"><i class="fa-solid fa-triangle-exclamation" fa-fw"></i> 注意事項</h3>
       <ul class="checklist">
         <li>スリ対策：前ポケット・ファスナー活用</li>
         <li>夜間は明るい通りを利用</li>
         <li>混雑時のメトロは極力回避</li>
       </ul>
 
-      <h3 class="sub-title"><i class="fa-regular fa-square-check"></i> 持ち物チェック</h3>
+      <h3 class="sub-title"><i class="fa-regular fa-square-check" fa-fw"></i> 持ち物チェック</h3>
       <ul class="checklist">
         <li>パスポート・クレジットカード</li>
         <li>モバイルバッテリー・変換プラグ</li>
@@ -224,7 +240,7 @@
 
     <!-- ===== マップ（カード内埋め込み） ===== -->
     <section id="map" class="section">
-      <h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> マップ</h2>
+      <h2 class="section-title"><i class="fa-solid fa-map-location-dot" fa-fw"></i> マップ</h2>
       <div class="card">
         <div class="map-wrap">
           <iframe
@@ -237,7 +253,7 @@
 
     <!-- ===== 連絡先 ===== -->
     <section id="contact" class="section alt">
-      <h2 class="section-title"><i class="fa-regular fa-address-book"></i> 連絡先</h2>
+      <h2 class="section-title"><i class="fa-regular fa-address-book" fa-fw"></i> 連絡先</h2>
       <div class="info-box">
         <p>緊急：112（欧州）</p>
         <p>ホテル：+33-1-23-45-67-89</p>
