@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Commit & Push",
+        "type": "shell",
+        "command": "git add . && git commit -m \"Quick commit\" && git push",
+        "problemMatcher": [],
+        "group": {
+          "kind": "none",
+          "isDefault": false
+        }
+      }
+    ]
+  }

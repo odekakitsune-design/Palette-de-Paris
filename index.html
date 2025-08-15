@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Meow+Script&display=swap" rel="stylesheet">
 
   <!-- ===== アイコン(Font Awesome) ===== -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/J6MDZfJ8bV7QTT1T0U5zTh+7tZ6Vx1iVQxYw3n5N9e5VgYp2r5r5nyvYQHq1B4d8wQXK7Q1Yg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- ===== CSS ===== -->
   <link rel="stylesheet" href="style.css">
@@ -44,7 +44,7 @@
 
   <!-- ===== 固定ナビ（SPファースト） ===== -->
   <nav class="navbar">
-    <div class="logo">Palette de Paris</div>
+    <div class="logo"><img src="images/paint.png" alt="トップビュー">Palette de Paris</div>
     <button class="hamburger" aria-label="メニューを開く">
       <span class="icon">☰</span> <span class="label">MENU</span>
     </button>
@@ -54,11 +54,12 @@
   <div class="menu-overlay" aria-hidden="true">
     <button class="menu-close" aria-label="メニューを閉じる">× <span>Close</span></button>
     <ul class="menu-list">
-      <li><a href="#schedule">日程表</a></li>
-      <li><a href="#info">情報リスト</a></li>
-      <li><a href="#map">マップ</a></li>
-      <li><a href="#tips">お役立ち情報</a></li>
-      <li><a href="#contact">連絡先</a></li>
+      <li class="menu-ttl">Menu</li>
+      <li><a href="#schedule"><i class="fa-solid fa-calendar-days"></i>日程表</a></li>
+      <li><a href="#info"><i class="fa-solid fa-info-circle"></i>情報リスト</a></li>
+      <li><a href="#map"><i class="fa-solid fa-map-location-dot"></i>マップ</a></li>
+      <li><a href="#tips"><i class="fa-solid fa-lightbulb"></i>お役立ち情報</a></li>
+      <li><a href="#contact"><i class="fa-solid fa-envelope"></i> 連絡先</a></li>
     </ul>
   </div>
 
