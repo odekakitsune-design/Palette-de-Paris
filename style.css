@@ -292,98 +292,203 @@ border-bottom:3px dotted;
   gap:.6rem;
 }
 
+
 /* =========================================
-   日程表（横スクロールなし）
+   日程タブ＆タイムライン
    ========================================= */
-.schedule-table{
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed; /* 幅固定で折り返し */
-  background:#fff;
-  border-radius:10px;
-  overflow:hidden;
-}
-.schedule-table th, .schedule-table td{
-  border:1px solid rgba(0,0,0,0.08);
-  padding: 8px;
-  text-align:left;
-  vertical-align: top;
-  word-wrap: break-word;
-  overflow-wrap: anywhere;
-}
-.schedule-table th{
-  background: #fafafa;
-  font-weight: 600;
-}
-/* =========================================
-   日程タブ＆タイムライン（新規追加／上書きなし）
-   ========================================= */
-/* タイムライン全体 */
-.timeline-section {
-  padding: 1rem;
-  background: #fff;
-  border-radius: 8px;
-}
 
-/* タブ部分 */
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
+/* ノートインデックスタブ風デザイン */
+section.timeline-section {
+    margin-top: 2rem;
 }
-.tabs button {
-  background: #eee;
-  border: none;
-  padding: 0.5rem 1rem;
-  margin: 0.2rem;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.tabs button[aria-selected="true"] {
-  background: #333;
-  color: #fff;
-}
-
-/* パネル */
-.panels > div {
-  display: none;
-}
-.panels > div.active {
-  display: block;
-}
-
-/* タイムラインアイテム */
-.timeline {
+.timeline-section .tabs {
   display: grid;
-  grid-template-columns: 70px 40px 1fr;
-  gap: 0.5rem;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-.timeline .time {
-  font-weight: bold;
-}
-.timeline .icon {
-  font-size: 1.2rem;
-  text-align: center;
-}
-.timeline .event {
-  padding: 0.4rem 0.6rem;
-  border-radius: 6px;
-  background: #f9f9f9;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); /* 可変数に対応 */
+  gap: 0px;
+  margin: 0;
 }
 
-/* 移動手段カラー */
-.icon.flight { color: #1e90ff; }   /* 青 */
-.icon.taxi,
-.icon.train,
-.icon.bus,
-.icon.walk { color: #ff9800; }    /* オレンジ系統で統一 */
-.icon.hotel { color: #795548; }   /* 茶系 */
-.icon.food { color: #e91e63; }    /* ピンク */
-.icon.sight { color: #4caf50; }   /* 緑 */
-.icon.shop { color: #9c27b0; }    /* 紫 */
-.icon.link { color: #607d8b; }    /* 青みグレー */
+.timeline-section .tabs > button {
+  appearance: none;
+  border: 2px solid rgba(var(--dullblue), 1);
+  background: #e5ebee;
+  border-radius: 12px 12px 0 0;  /* ← 上丸・下まっすぐ */
+  padding: 0.5rem 5px;
+  font-size: .9rem;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+  position: relative;
+  top: 2px; /* 非選択タブを少し下げて奥に */
+  z-index: 1;
+}
+
+.timeline-section .tabs > button[aria-selected="true"] {
+  background: #fff;
+  font-weight: 600;
+  border: 2px solid rgba(var(--dullblue), 1);
+  border-bottom: none;
+  z-index: 2; /* 前に出す */
+  top: 0;     /* 選択タブを上に */
+}
+
+/* タブの下に境界線を補強（パネルと一体感を出す） */
+.timeline-section .panels {
+  border: 2px solid rgba(var(--dullblue), 1);
+  border-top: none; /* タブの下はなし */
+  background: #fff;
+  margin-top: -1px; /* ← tabs と隙間なく接続 */
+  border-radius: 0 0 12px 12px; /* 下だけ丸く */
+}
+
+/* パネル表示切替 */
+.timeline-section .panels > div{ display:none; }
+.timeline-section .panels > div.active{ display:block; }
+
+/* --- ヘッダー（x日目／テーマ／AM/PM） --- */
+.day-header{
+  display: grid;
+  grid-template-columns: 72px 1fr; /* 左：日数ボックス／右：テーマ＋AMPM */
+  column-gap: 14px;
+  align-items: center;
+  padding: 12px;
+  background: #fff;
+  border-radius: 12px;
+  border:1px solid rgb(214, 204, 204,0.5);
+  margin: 8px 0 12px;
+}
+.day-label{
+  display:flex; align-items:center; justify-content:center;
+  width: 72px; height: 72px;
+  border-radius: 14px;
+  background: rgba(122,138,161,.12); /* くすみブルーの淡色帯 */
+  font-weight: 700;
+}
+.day-theme{
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.tags {
+  display: flex;
+  gap: 6px;       /* 横並びなら gap だけ */
+  flex-wrap: wrap;
+}
+
+.tag {
+  border-radius: 12px;
+  padding: 0;
+  font-size: .75rem;
+  color: #374151;
+  position: relative;
+}
+
+/* AM/PMのバッジカラー */
+.tags .tag strong {
+  display: inline-block;
+  padding: 0.5rem 0.8rem;
+  border-radius: 30px;
+  font-size: 0.85em;
+  margin-right: 6px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* 親の am/pm クラスを使って色付け */
+.tags .tag.am strong {
+  background: #d2e3e9;
+  color: #637880;
+}
+.tags .tag.pm strong {
+  background: #ecdcc8;
+  color: #8f683c;
+}
+
+/* --- タイムライン基本--- */
+.timeline {
+    display: grid;
+    grid-template-columns: 45px 34px 1fr;
+    column-gap: 10px;
+    margin: 0;
+    padding: 12px 0;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+/* アイコン共通：位置基準 */
+.timeline .icon{
+  text-align:center;
+  position: relative;
+}
+.timeline .icon i{ font-size: 1.35rem; }
+
+/* === 通常イベント（●のみ。線は描かない） === */
+.timeline:not(.move) .icon::before,
+.timeline:not(.move) .icon::after {
+  content: none;
+}
+.timeline.move .icon {
+  text-align: left;
+  margin-left: 10px; /* ★をちょっと右に寄せる */
+}
+/* === 移動イベント（左に点線＋右に★） === */
+.timeline.move {
+  text-align: left;
+  position: relative;
+  grid-template-columns: 72px 34px 1fr;
+}
+.timeline.move::before {
+    content: "";
+    position: absolute;
+    left: 72px;
+    top: 10%;
+    bottom: 0;
+    width: 0;
+    height: 80%;
+    border-left: 2px dotted #b3d4da;
+}
+.timeline.move .icon::after { content:none; } /* 移動は下側線なし */
+
+/* アイコンを小さめに */
+.timeline.move .icon i{
+  font-size: 1.1rem;
+}
+
+/* 移動イベントの備考は liドット無し */
+.timeline.move .event ul.details{
+  list-style: none;
+  margin-left: 1.2rem;
+}
+
+/* === 大人くすみ系パステル配色 === */
+:root{
+  --cat-flight: #a3b6c4; /* グレイッシュブルー */
+  --cat-taxi:   #b3d4da; /* スカイブルー */
+  --cat-train:  #b3d4da; /* スカイブルー */
+  --cat-bus:    #b3d4da; /* スカイブルー */
+  --cat-walk:   #b3d4da; /* スカイブルー */
+  --cat-sight:  #d4b4b4; /* ダスティピンク */
+  --cat-food:   #e2b08e; /* テラコッタベージュ */
+  --cat-hotel:  #b8ca98; /* ペールグリーン */
+  --cat-shop:   #c4b2b8; /* モーブ */
+}
+.icon.flight i{ color: var(--cat-flight); }
+.icon.taxi   i{ color: var(--cat-taxi); }
+.icon.train  i{ color: var(--cat-train); }
+.icon.bus    i{ color: var(--cat-bus); }
+.icon.walk   i{ color: var(--cat-walk); }
+.icon.sight  i{ color: var(--cat-sight); }
+.icon.food   i{ color: var(--cat-food); }
+.icon.hotel  i{ color: var(--cat-hotel); }
+.icon.shop   i{ color: var(--cat-shop); }
+
+
+/* パネル内の余白 */
+.panels > .day-panel{
+  background: var(--card);
+  border-radius: 12px;
+  padding: 12px;
+
+}
 
 /* =========================================
    マップ
