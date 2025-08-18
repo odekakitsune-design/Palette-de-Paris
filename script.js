@@ -237,76 +237,95 @@ function renderTabs(days) {
 //   // renderTabs(days);
 // });
 
-// Google Sheets APIからデータ取得
-// 1) APIからの読み取り部分
+// // Google Sheets APIからデータ取得
+// // 1) APIからの読み取り部分
+// async function fetchSchedule() {
+//   const apiKey  = "AIzaSyBEeDZb5_2GsxInBtokjI_ij9ycsnXwnKk";       // APIキー
+//   const sheetId = "1RJnzcPcSGI9YTCaLIqhgRVhDKB7ttATCLKspcyCCinA"; // シートID
+//   const range   = "schedule!A:G";             // 列を指定
+
+//   const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(range)}?key=${apiKey}`;
+//   const res = await fetch(url);
+//   if (!res.ok) throw new Error("Google Sheets API 取得失敗");
+//   const data = await res.json();
+//   return convertRowsToDays(data.values);
+// }
+
+// // 2) rows → days への変換関数
+// function convertRowsToDays(rows) {
+//   if (!rows || rows.length < 2) return [];
+
+//   const header = rows[0];
+//   const data   = rows.slice(1);
+//   const days = [];
+//   let currentDay = null;
+
+//   data.forEach(r => {
+//     const row = {};
+//     header.forEach((key, i) => {
+//       row[key] = r[i] || "";
+//     });
+
+//     // 「親行」かどうかの判定
+//     if (row.dayLabel) {
+//       currentDay = {
+//         label: row.label || "",
+//         dayLabel: row.dayLabel,
+//         theme: row.theme || "",
+//         am: row.am || "",
+//         pm: row.pm || "",
+//         items: []
+//       };
+//       days.push(currentDay);
+//     }
+
+//     // 親が確定していて内容行なら item として追加
+//     if (currentDay && row.time) {
+//       currentDay.items.push({
+//         time: row.time,
+//         type: row.type,
+//         text: row.text,
+//         details: row.details ? row.details.split("\n") : [],
+//         duration: row.duration || "",
+//         url: row.url || "",
+//         notes: row.notes || ""
+//       });
+//     }
+//   });
+
+//   return days;
+// }
+
+// // 3) 読み込み → UI描画（DOMContentLoaded への登録）
+// document.addEventListener('DOMContentLoaded', () => {
+//   fetchSchedule()
+//     .then(days => {
+//       console.log("取得した days:", days);
+//       renderTabs(days);
+//     })
+//     .catch(err => {
+//       console.error("スケジュール取得エラー:", err);
+//     });
+// });
+
 async function fetchSchedule() {
-  const apiKey  = "AIzaSyBEeDZb5_2GsxInBtokjI_ij9ycsnXwnKk";       // APIキー
-  const sheetId = "1RJnzcPcSGI9YTCaLIqhgRVhDKB7ttATCLKspcyCCinA"; // シートID
-  const range   = "schedule!A:G";             // 列を指定
+const apiKey  = "AIzaSyA498eTDYusBPxzeUdogcQ7Z3XG5zPvKk4";       // APIキー
+const sheetId = "1RJnzcPcSGI9YTCaLIqhgRVhDKB7ttATCLKspcyCCinA"; // シートID
+const range   = "schedule!A:G";             // 列を指定
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${encodeURIComponent(range)}?key=${apiKey}`;
 
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(range)}?key=${apiKey}`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error("Google Sheets API 取得失敗");
-  const data = await res.json();
-  return convertRowsToDays(data.values);
-}
-
-// 2) rows → days への変換関数
-function convertRowsToDays(rows) {
-  if (!rows || rows.length < 2) return [];
-
-  const header = rows[0];
-  const data   = rows.slice(1);
-  const days = [];
-  let currentDay = null;
-
-  data.forEach(r => {
-    const row = {};
-    header.forEach((key, i) => {
-      row[key] = r[i] || "";
-    });
-
-    // 「親行」かどうかの判定
-    if (row.dayLabel) {
-      currentDay = {
-        label: row.label || "",
-        dayLabel: row.dayLabel,
-        theme: row.theme || "",
-        am: row.am || "",
-        pm: row.pm || "",
-        items: []
-      };
-      days.push(currentDay);
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      const text = await res.text(); // エラー内容を直接確認できる
+      throw new Error(`HTTP ${res.status} - ${text}`);
     }
-
-    // 親が確定していて内容行なら item として追加
-    if (currentDay && row.time) {
-      currentDay.items.push({
-        time: row.time,
-        type: row.type,
-        text: row.text,
-        details: row.details ? row.details.split("\n") : [],
-        duration: row.duration || "",
-        url: row.url || "",
-        notes: row.notes || ""
-      });
-    }
-  });
-
-  return days;
+    const data = await res.json();
+    return convertRowsToDays(data.values);
+  } catch (err) {
+    console.error("スケジュール取得エラー:", err);
+    throw err;
+  }
 }
-
-// 3) 読み込み → UI描画（DOMContentLoaded への登録）
-document.addEventListener('DOMContentLoaded', () => {
-  fetchSchedule()
-    .then(days => {
-      console.log("取得した days:", days);
-      renderTabs(days);
-    })
-    .catch(err => {
-      console.error("スケジュール取得エラー:", err);
-    });
-});
-
 
 
