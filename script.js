@@ -56,8 +56,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* =========================================
-   日程タブ＆タイムライン生成（新規追加・置換）
+   日程タブ＆タイムライン生成
    ========================================= */
+function getIconClass(type) {
+  switch(type) {
+    case 'taxi': return 'fa-taxi';
+    case 'bus': return 'fa-bus';
+    case 'train': return 'fa-train';
+    case 'walk': return 'fa-shoe-prints';
+    case 'museum': return 'fa-landmark';
+    case 'meal': return 'fa-utensils';
+    default: return 'fa-circle'; // fallback
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   const tabsContainer   = document.getElementById('tabs');
   const panelsContainer = document.getElementById('panels');
@@ -125,12 +137,31 @@ document.addEventListener('DOMContentLoaded', function () {
       time.textContent = item.time || '';
       row.appendChild(time);
 
-      const icon = document.createElement('div');
-      icon.className = 'icon ' + (item.type || '');
-      const fa = document.createElement('i');
-      fa.className = `fas ${item.icon || 'fa-circle'}`;
-      icon.appendChild(fa);
-      row.appendChild(icon);
+// アイコン（タイプに応じた色クラス）
+const icon = document.createElement('div');
+icon.className = 'icon ' + (item.type || '');
+
+// type→FontAwesome マッピング（最新版）
+const FA_ICON = {
+  taxi:   'fa-taxi',
+  bus:    'fa-bus',
+  train:  'fa-train',
+  walk:   'fa-person-walking', 
+  flight: 'fa-plane-departure',
+  sight:  'fa-landmark',
+  meal:   'fa-utensils',
+  hotel:  'fa-hotel',
+  spot:   'fa-location-dot'
+};
+
+const fa = document.createElement('i');
+const faClass =
+  (item.icon && /^fa-/.test(item.icon))
+    ? item.icon
+    : (FA_ICON[item.type] || 'fa-circle');// 不明なら●表記
+fa.className = `fas ${faClass}`;
+icon.appendChild(fa);
+row.appendChild(icon);
 
       const event = document.createElement('div');
       event.className = 'event';
@@ -140,26 +171,52 @@ document.addEventListener('DOMContentLoaded', function () {
       title.textContent = item.text || '';
       event.appendChild(title);
 
-      if (Array.isArray(item.details) && item.details.length){
-        const ul = document.createElement('ul');
-        ul.className = 'details';
+if (item.details) {
+  const ul = document.createElement('ul');
+  ul.className = 'details';
 
-        item.details.forEach(d => {
-          const li = document.createElement('li');
-          if (typeof d === 'string' && d.trim().startsWith('所要時間')){
-            li.innerHTML = `<i class="fa-regular fa-clock"></i>&nbsp;${d}`;
-          } else if (typeof d === 'string' && /https?:\/\//.test(d)){
-            li.innerHTML = d.replace(/https?:\/\/\S+/g, (url) => {
-              return `<a href="${url}" target="_blank" rel="noopener">${url}</a>`;
-            });
-          } else {
-            li.textContent = d;
-          }
-          ul.appendChild(li);
+  if (Array.isArray(item.details) && item.details.length) {
+    // ← ここがあなたの今のコードと同じ「配列版」処理
+    item.details.forEach(d => {
+      const li = document.createElement('li');
+      if (typeof d === 'string' && d.trim().startsWith('所要時間')) {
+        li.innerHTML = `<i class="fa-regular fa-clock"></i>&nbsp;${d}`;
+      } else if (typeof d === 'string' && /https?:\/\//.test(d)) {
+        li.innerHTML = d.replace(/https?:\/\/\S+/g, (url) => {
+          return `<a href="${url}" target="_blank" rel="noopener">${url}</a>`;
         });
-
-        event.appendChild(ul);
+      } else {
+        li.textContent = d;
       }
+      ul.appendChild(li);
+    });
+  } else if (typeof item.details === 'object') {
+    // ← 追加：オブジェクト版の処理
+    const { duration, url, notes } = item.details;
+
+    if (duration) {
+      const li = document.createElement('li');
+      li.innerHTML = `<i class="fa-regular fa-clock"></i>&nbsp;所要時間: ${duration}`;
+      ul.appendChild(li);
+    }
+    if (url) {
+      const li = document.createElement('li');
+      li.innerHTML = String(url).replace(/https?:\/\/\S+/g, (u) =>
+        `<a href="${u}" target="_blank" rel="noopener">${u}</a>`);
+      ul.appendChild(li);
+    }
+    if (notes) {
+      const list = Array.isArray(notes) ? notes : String(notes).split(/\r?\n/);
+      list.filter(Boolean).forEach(n => {
+        const li = document.createElement('li');
+        li.textContent = n;
+        ul.appendChild(li);
+      });
+    }
+  }
+
+  if (ul.children.length) event.appendChild(ul);
+}
 
       row.appendChild(event);
       panel.appendChild(row);

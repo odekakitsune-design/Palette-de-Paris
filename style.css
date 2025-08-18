@@ -155,11 +155,14 @@ border-bottom:3px dotted;
 /* =========================================
    ヒーロー（フル幅背景＋半透明オーバーレイ）
    ========================================= */
-.hero{
-  position: relative;
-  width: 100%;
-  min-height: 56vh;
-  background:rgba(var(--dullblue), 1) url('images/topview.png') center/cover no-repeat;
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 56vh;
+    background: rgba(var(--dullblue), 1) url('images/topview.png') center/cover no-repeat;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 0 16px;
 }
 .hero-overlay{
   position:absolute; inset:0;
@@ -245,8 +248,12 @@ border-bottom:3px dotted;
 .card .card-title{ font-weight: 600; margin-top: 6px; }
 .card .card-body{ margin-top: 4px; font-size: .95rem; color: #444; }
 
-.overview-cards .card{ display:flex; gap:12px; align-items:flex-start; }
-
+.overview-cards .card {
+    display: flex;
+    gap: 1px;
+    align-items: center;
+    justify-content: space-around;
+}
 .spot-cards .card-media,
 .special-card .card-media{
   width: 100%;
@@ -257,6 +264,30 @@ border-bottom:3px dotted;
 }
 .special-card .card-media.wide{
   height: 180px;
+}
+
+.fukidashi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+}
+.fukidashi::before {
+  content: "";
+  width: 30px;
+  height: 2px;
+  transform: rotate(60deg);
+  box-sizing: border-box;
+  background-color: rgba(var(--dullblue), 1);;
+}
+.fukidashi::after {
+  content: "";
+  width: 30px;
+  height: 2px;
+  transform: rotate(-60deg);
+  box-sizing: border-box;
+  background-color: rgba(var(--dullblue), 1);;
 }
 
 /* =========================================
@@ -459,27 +490,29 @@ section.timeline-section {
   margin-left: 1.2rem;
 }
 
-/* === 大人くすみ系パステル配色 === */
-:root{
-  --cat-flight: #a3b6c4; /* グレイッシュブルー */
+
+/* アイコンカラー */
+:root {
   --cat-taxi:   #b3d4da; /* スカイブルー */
-  --cat-train:  #b3d4da; /* スカイブルー */
   --cat-bus:    #b3d4da; /* スカイブルー */
+  --cat-train:  #b3d4da; /* スカイブルー */
   --cat-walk:   #b3d4da; /* スカイブルー */
-  --cat-sight:  #d4b4b4; /* ダスティピンク */
-  --cat-food:   #e2b08e; /* テラコッタベージュ */
+  --cat-flight: #a3b6c4; /* グレイッシュブルー */
+  --cat-sight:  #e2b08e; /* テラコッタベージュ */
+  --cat-spot:   #e2b08e; /* テラコッタベージュ */
+  --cat-meal:   #d4b4b4; /* ダスティピンク */
   --cat-hotel:  #b8ca98; /* ペールグリーン */
-  --cat-shop:   #c4b2b8; /* モーブ */
 }
-.icon.flight i{ color: var(--cat-flight); }
-.icon.taxi   i{ color: var(--cat-taxi); }
-.icon.train  i{ color: var(--cat-train); }
-.icon.bus    i{ color: var(--cat-bus); }
-.icon.walk   i{ color: var(--cat-walk); }
-.icon.sight  i{ color: var(--cat-sight); }
-.icon.food   i{ color: var(--cat-food); }
-.icon.hotel  i{ color: var(--cat-hotel); }
-.icon.shop   i{ color: var(--cat-shop); }
+
+.icon.taxi i   { color: var(--cat-taxi); }
+.icon.bus i    { color: var(--cat-bus); }
+.icon.train i  { color: var(--cat-train); }
+.icon.walk i   { color: var(--cat-walk); }
+.icon.flight i { color: var(--cat-flight); }
+.icon.sight i  { color: var(--cat-sight); }
+.icon.meal i   { color: var(--cat-meal); }
+.icon.hotel i  { color: var(--cat-hotel); }
+.icon.spot i   { color: var(--cat-spot); }
 
 
 /* パネル内の余白 */
