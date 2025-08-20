@@ -2,9 +2,9 @@
    基本設定（SPファースト＋PC余白背景）
    ========================================= */
 
-/* カラーバリエーション：くすみトリコロール rgba(var(--%%%), 1); */
+/* カラーバリエーション：くすみトリコロール rgba(var(--%%%), 1); color:#%%%%%; */
 :root {
-  --beige:   244, 239, 233; /* #f4efe9 ベージュ */
+  --beige:   235, 234, 229; /* #ebeae5 ベージュ */
   --dullblue:150, 175, 209; /* #7995bb; くすみブルー */
   --wine:    123, 63, 74;    /* #7b3f4a ワインレッド */
   --ink:     75, 73, 69;     /* rgb(75, 73, 69) インク（濃いグレー） */
@@ -21,12 +21,12 @@ body{
   background:rgba(var(--beige, 1));
   font-size: 13px;
   font-weight: normal;
+
 }
 img {
   display: block;
   max-width: 100%;
   height: auto;
-
 }
 a{
   text-decoration: none;
@@ -85,7 +85,7 @@ a{
   color:#fff;
   background: rgba(255, 255, 255, 0.281);
   border:1px solid rgba(255, 255, 255, 0.315);
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
 }
 .hamburger .icon{ font-size: 1.2rem; }
@@ -216,7 +216,7 @@ border-bottom:3px dotted;
    ========================================= */
 .section{
   background:rgba(var(--card, 1));
-  border-radius: 12px;
+  border-radius: 5px;
   padding: 16px;
   margin: 16px 0;
 }
@@ -250,7 +250,7 @@ section#overview {
 .card{
   background:#fff;
   border:1px solid rgba(0,0,0,0.06);
-  border-radius:12px;
+  border-radius:5px;
   padding: 12px;
 }
 .card .card-icon{ font-size: 1.4rem; color:rgba(var(--wine)); }
@@ -339,7 +339,7 @@ section#overview {
 .info-box{
   background:#fff;
   border:1px dashed rgba(0,0,0,0.2);
-  border-radius:10px;
+  border-radius:5px;
   padding: 10px;
   margin-bottom: 12px;
 }
@@ -460,12 +460,12 @@ section#overview {
 .hotel-notes, .hotel-surroundings {
     margin-top: 16px;
     padding: 12px 14px;
-    background: rgb(var(--dullblue),0.2);
+    background: rgb(185 181 177 / 20%);
     border-radius: 2px;
     box-shadow: 2px 2px 6px rgba(0,0,0,0.08);
     position: relative;
     border: 1px solid #ececec;
-    margin: 2rem auto;
+    margin: 2.5rem auto;
 }
 
 /* メモの上にテープを貼る */
@@ -481,9 +481,6 @@ section#overview {
   background: rgba(255,255,255,0.7);
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-}
-.hotel-notes {
-  margin-top: 1rem;
 }
 
 .hotel-notes h4 {
@@ -528,7 +525,7 @@ section#overview {
 .badge-shared { background: rgb(231, 190, 163); }
 /* 見出し */
 .hotel-notes h4, .hotel-surroundings h4 {
-    margin: 1rem 0.5rem;
+    margin: 1rem 5px;
     color: #3c5575;
     font-size: 1.1rem;
     display: inline-flex;
@@ -555,26 +552,6 @@ section#overview {
   overflow: hidden;
 }
 
-
-/* =========================================
-   基本情報（グリッド）
-   ========================================= */
-.grid{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
-}
-.grid-item{
-  background:#fff;
-  border:1px solid rgba(0,0,0,0.06);
-  border-radius:10px;
-  padding:10px;
-  display:flex;
-  align-items:center;
-  gap:.6rem;
-}
-
-
 /* =========================================
    日程タブ＆タイムライン
    ========================================= */
@@ -596,7 +573,7 @@ section.timeline-section {
   border: 2px solid rgba(var(--dullblue), 1);
   color:rgba(var(--ink), 1);
   background: #e5ebee;
-  border-radius: 12px 12px 0 0;  /* ← 上丸・下まっすぐ */
+  border-radius: 8px 8px 0 0;  /* ← 上丸・下まっすぐ */
   padding: 0.5rem 5px;
   font-size: .9rem;
   line-height: 1.4;
@@ -622,7 +599,7 @@ section.timeline-section {
   border-top: none; /* タブの下はなし */
   background: #fff;
   margin-top: -1px; /* ← tabs と隙間なく接続 */
-  border-radius: 0 0 12px 12px; /* 下だけ丸く */
+  border-radius: 0 0 8px 8px; /* 下だけ丸く */
   padding: 1rem;
 }
 
@@ -786,7 +763,7 @@ section.timeline-section {
 .icon.hotel i  { color: var(--cat-hotel); }
 .icon.spot i   { color: var(--cat-spot); }
 .icon.spot i   { color: var(--cat-spot); }
-.icon.other i { color: rgb(177, 177, 177,1); /* その他はインク色 */
+.icon.other i { color: rgb(177, 177, 177,1); }/* その他はインク色 */
 
 /* パネル内の余白 */
 .panels > .day-panel{
@@ -840,7 +817,8 @@ section.timeline-section {
   margin: 2rem auto;
   text-align: center;
   position: relative;
-  width: 90%;
+  width:100%;
+  object-fit: cover;
 }
 
 .tips-image img {
@@ -848,7 +826,7 @@ section.timeline-section {
   border: 8px solid #fff; /* 写真の白フチ */
   box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 影 */
   border-radius: 4px; /* 角を少し丸めると柔らかい */
-  transform: rotate(-1.5deg); /* ちょっと傾ける */
+  /*transform: rotate(-1.5deg);  ちょっと傾ける */
   transition: transform 0.3s ease;
 }
 /* マステ（左上） */
@@ -861,7 +839,7 @@ section.timeline-section {
     height: 20px;
     background: repeating-linear-gradient(
     -45deg,              /* ストライプ角度 */
-    #f4efe9 0 6px,       /* ベージュ（背景色と馴染む） */
+    #dbc9cdcc 0 6px,       /* ベージュ（背景色と馴染む） */
     #ffffff 6px 12px     /* 白 */
   );
     border-radius: 3px;
@@ -880,7 +858,7 @@ section.timeline-section {
   height: 18px;
   background: repeating-linear-gradient(
     -45deg,
-    #f4efe9 0 6px,
+    #dbc9cdcc 0 6px,
     #ffffff 6px 12px
   );
   border-radius: 3px;
@@ -921,12 +899,12 @@ section.timeline-section {
 .tips-notes, .tips-surroundings {
     margin-top: 16px;
     padding: 12px 14px;
-    background: rgb(var(--dullblue),0.2);
+    background: rgb(185 181 177 / 20%);
     border-radius: 2px;
     box-shadow: 2px 2px 6px rgba(0,0,0,0.08);
     position: relative;
     border: 1px solid #ececec;
-    margin: 2rem auto;
+    margin: 2.5rem auto;
 }
 
 /* メモの上にテープを貼る */
@@ -942,9 +920,6 @@ section.timeline-section {
   background: rgba(255,255,255,0.7);
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-}
-.tips-notes {
-  margin-top: 1rem;
 }
 
 .tips-notes h4 {
@@ -1015,26 +990,79 @@ section.timeline-section {
   border-radius: 8px;
   overflow: hidden;
 }
-
-
-/* =========================================
-   基本情報（グリッド）
-   ========================================= */
-.grid{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
-}
-.grid-item{
-  background:#fff;
-  border:1px solid rgba(0,0,0,0.06);
-  border-radius:10px;
-  padding:10px;
-  display:flex;
-  align-items:center;
-  gap:.6rem;
+/* ===== おまけ ===== */
+.tips-extra-card {
+  background: #fff;
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: relative;
+  border: 1px solid #ececec;
+  background-image: 
+    linear-gradient(to right, rgba(241, 241, 241, 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(241, 241, 241, 0.5)  1px, transparent 1px);
+  background-size: 10px 10px; /* マス目のサイズ */
 }
 
+.tips-extra-card::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 30%;
+  height: 20px;
+
+  /* 暖色系くすみカラー・柄を少し付ける */
+  background: repeating-linear-gradient(
+    45deg,
+    #b4badb, 
+    #c9dbdd 4px, 
+    #c9d0df 4px, 
+    #b4c4db 8px
+  );
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  opacity: 0.9;
+}
+
+.tips-extra-card h4 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #3c5575;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 4px;
+  background: linear-gradient(transparent 60%, rgba(122,138,161,0.2) 60%);
+  font-weight: normal;
+}
+
+.tips-extra-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tips-extra-card li {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 6px 0;
+  position: relative;
+  padding-left: 16px;
+}
+.tips-extra-card .french {
+  font-size: 0.8rem;
+  color:rgb(114, 110, 100);
+  font-style: italic;
+}
+.tips-extra-card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: rgba(123,63,74,0.8); /* ワイン系カラーで可愛く */
+}
 
 
 /* =========================================
