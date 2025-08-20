@@ -204,7 +204,7 @@ function renderTabs(days) {
     panelsContainer.appendChild(panel);
   });
 
-  // タブ切替関数 
+  // タブ切替関数  
   function selectTab(i) {
     [...tabsContainer.children].forEach((b, idx) => {
       b.setAttribute('aria-selected', String(idx === i));
