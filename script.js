@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
    日程タブ＆タイムライン生成
    ========================================= */
 
-// 1) UI描画関数にまとめる
+// 1) UI描画
 function renderTabs(days) {
   const tabsContainer   = document.getElementById('tabs');
   const panelsContainer = document.getElementById('panels');
@@ -77,7 +77,7 @@ function renderTabs(days) {
     tabsContainer.appendChild(btn);
   });
 
-  // パネル生成（←あなたの長い処理をそのまま移植）
+  // パネル生成
   days.forEach((day, idx) => {
     const panel = document.createElement('div');
     panel.className = 'day-panel';
@@ -215,112 +215,27 @@ function renderTabs(days) {
   }
 }
 
-// 2) ダミーデータ or スプレ読み込みを呼ぶ
-// document.addEventListener('DOMContentLoaded', async function () {
-//   // ★まずはダミーデータで確認
-//   const dummy = [
-//     {
-//       label: "9/29",
-//       dayLabel: "1日目",
-//       theme: "出発と到着",
-//       items: [
-//         { time: "11:45", type:"flight", text: "羽田発", details: { notes: "AF293" } },
-//         { time: "18:10", type:"flight", text: "パリ着", details: { notes: "CDG空港" } }
-//       ]
-//     }
-//   ];
-//   renderTabs(dummy);
-
-//   // ★あとでここを差し替え
-//   // const rows = await fetchSchedule();
-//   // const days = convertRowsToDays(rows);
-//   // renderTabs(days);
-// });
-
-// // Google Sheets APIからデータ取得
-// // 1) APIからの読み取り部分
-// async function fetchSchedule() {
-//   const apiKey  = "AIzaSyBEeDZb5_2GsxInBtokjI_ij9ycsnXwnKk";       // APIキー
-//   const sheetId = "1RJnzcPcSGI9YTCaLIqhgRVhDKB7ttATCLKspcyCCinA"; // シートID
-//   const range   = "schedule!A:G";             // 列を指定
-
-//   const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(range)}?key=${apiKey}`;
-//   const res = await fetch(url);
-//   if (!res.ok) throw new Error("Google Sheets API 取得失敗");
-//   const data = await res.json();
-//   return convertRowsToDays(data.values);
-// }
-
-// // 2) rows → days への変換関数
-// function convertRowsToDays(rows) {
-//   if (!rows || rows.length < 2) return [];
-
-//   const header = rows[0];
-//   const data   = rows.slice(1);
-//   const days = [];
-//   let currentDay = null;
-
-//   data.forEach(r => {
-//     const row = {};
-//     header.forEach((key, i) => {
-//       row[key] = r[i] || "";
-//     });
-
-//     // 「親行」かどうかの判定
-//     if (row.dayLabel) {
-//       currentDay = {
-//         label: row.label || "",
-//         dayLabel: row.dayLabel,
-//         theme: row.theme || "",
-//         am: row.am || "",
-//         pm: row.pm || "",
-//         items: []
-//       };
-//       days.push(currentDay);
-//     }
-
-//     // 親が確定していて内容行なら item として追加
-//     if (currentDay && row.time) {
-//       currentDay.items.push({
-//         time: row.time,
-//         type: row.type,
-//         text: row.text,
-//         details: row.details ? row.details.split("\n") : [],
-//         duration: row.duration || "",
-//         url: row.url || "",
-//         notes: row.notes || ""
-//       });
-//     }
-//   });
-
-//   return days;
-// }
-
-// // 3) 読み込み → UI描画（DOMContentLoaded への登録）
-// document.addEventListener('DOMContentLoaded', () => {
-//   fetchSchedule()
-//     .then(days => {
-//       console.log("取得した days:", days);
-//       renderTabs(days);
-//     })
-//     .catch(err => {
-//       console.error("スケジュール取得エラー:", err);
-//     });
-// });
+/* =========================================
+   Google Sheets APIからデータ取得 
+    ========================================= */
 
 async function fetchSchedule() {
-const apiKey  = "AIzaSyA498eTDYusBPxzeUdogcQ7Z3XG5zPvKk4";       // APIキー
-const sheetId = "1RJnzcPcSGI9YTCaLIqhgRVhDKB7ttATCLKspcyCCinA"; // シートID
-const range   = "schedule!A:G";             // 列を指定
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${encodeURIComponent(range)}?key=${apiKey}`;
+  const apiKey  = "AIzaSyA498eTDYusBPxzeUdogcQ7Z3XG5zPvKk4";       // APIキー
+  const spreadsheetId = "1RJnzcPcSGI9YTCaLIqhgRVhDKB7ttATCLKspcyCCinA"; // シートID
+  const range   = "schedule!A:G";           // 列を指定
 
-  try {
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${encodeURIComponent(range)}?key=${apiKey}`;
+  console.log("fetch URL:", url); // 確認用
+ try {
     const res = await fetch(url);
     if (!res.ok) {
       const text = await res.text(); // エラー内容を直接確認できる
       throw new Error(`HTTP ${res.status} - ${text}`);
     }
+
     const data = await res.json();
+    console.log("Google Sheets APIから受け取ったデータ:", data);
+
     return convertRowsToDays(data.values);
   } catch (err) {
     console.error("スケジュール取得エラー:", err);
@@ -328,4 +243,116 @@ const range   = "schedule!A:G";             // 列を指定
   }
 }
 
+/* =========================================
+   スプレッドシートの行データを日程オブジェクトに変換
+   rows → days への変換関数（縦ブロック対応：label/dayLabel 見出しで区切る）
+   ========================================= */
 
+function convertRowsToDays(rows) {
+  if (!rows || !rows.length) return [];
+
+  const days = [];
+  let i = 0;
+
+  const val = (arr, idx) => (arr && arr[idx] != null ? String(arr[idx]).trim() : "");
+
+  while (i < rows.length) {
+    const r = rows[i] || [];
+
+    // --- ブロック開始の見出し行を検出: ["label","dayLabel","theme","am","pm", ...] ---
+    const isBlockHeader =
+      val(r,0) === "label" && val(r,1) === "dayLabel";
+
+    if (!isBlockHeader) { i++; continue; }
+
+    // --- 親メタ行（見出しの次の行） ---
+    const meta = rows[i + 1] || [];
+    const day = {
+      // A列: タブに出すラベル（"9/29" や "10/4-10/5" など任意OK）
+      label:   val(meta, 0),
+      // B列: "1日目" / "2日目" … ← ここが親判定の要
+      dayLabel: val(meta, 1),
+      theme:   val(meta, 2),
+      am:      val(meta, 3),
+      pm:      val(meta, 4),
+      items:   []
+    };
+    days.push(day);
+
+    // --- items 見出し行（通常 "time","type","text","duration","url","urltext","notes"） ---
+    const itemsHeaderRow = rows[i + 2] || [];
+    const headerIndex = {};
+    itemsHeaderRow.forEach((h, idx) => { headerIndex[String(h).trim()] = idx; });
+
+    // 欲しい列の場所（シート側の順番入れ替わってもOKにする）
+    const idxTime    = headerIndex["time"]    ?? 0;
+    const idxType    = headerIndex["type"]    ?? 1;
+    const idxText    = headerIndex["text"]    ?? 2;
+    const idxDur     = headerIndex["duration"]?? 3;
+    const idxUrl     = headerIndex["url"]     ?? 4;
+    const idxUrlText = headerIndex["urltext"] ?? 5;
+    const idxNotes   = headerIndex["notes"]   ?? 6;
+
+    // --- items を収集（次のブロック見出しが来るまで） ---
+    let j = i + 3; // items の先頭行
+    while (j < rows.length) {
+      const rr = rows[j] || [];
+
+      // 次のブロック開始で終了
+      const nextIsHeader =
+        val(rr,0) === "label" && val(rr,1) === "dayLabel";
+      if (nextIsHeader) break;
+
+      // 空行はスキップ
+      const allEmpty = rr.every(c => String(c||"").trim() === "");
+      if (!allEmpty) {
+        const time = val(rr, idxTime);
+        const type = val(rr, idxType);
+        const text = val(rr, idxText);
+
+        // 少なくとも何か入ってたら item として追加
+        if (time || type || text) {
+          const duration = val(rr, idxDur);
+          const url      = val(rr, idxUrl);
+          const urltext  = val(rr, idxUrlText);
+          const notesRaw = val(rr, idxNotes);
+
+          const item = { time, type, text };
+
+          // details はオブジェクトで渡す（renderTabs の既存実装にそのまま合う）
+          if (duration || url || urltext || notesRaw) {
+            item.details = {
+              duration,
+              url,
+              urltext,
+              // 文字列のままでOK（renderTabs 側で行分割して <li> 化してくれる）
+              notes: notesRaw
+            };
+          }
+
+          day.items.push(item);
+        }
+      }
+      j++;
+    }
+
+    // 次ブロック探索へ
+    i = j;
+  }
+
+  return days;
+}
+
+
+
+// DOM読み込み後に処理開始
+document.addEventListener('DOMContentLoaded', () => {
+  fetchSchedule()
+    .then(days => {
+      console.log("取得した days:", days);
+      renderTabs(days); // ← タブ描画処理。class名など変更不要
+    })
+    .catch(err => {
+      console.error("スケジュール取得エラー:", err);
+    });
+});
