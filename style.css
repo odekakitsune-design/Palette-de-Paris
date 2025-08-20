@@ -7,7 +7,7 @@
   --beige:   244, 239, 233; /* #f4efe9 ベージュ */
   --dullblue:150, 175, 209; /* #7995bb; くすみブルー */
   --wine:    123, 63, 74;    /* #7b3f4a ワインレッド */
-  --ink:     51, 51, 51;     /* #333333 インク（濃いグレー） */
+  --ink:     75, 73, 69;     /* rgb(75, 73, 69) インク（濃いグレー） */
   --card:    255, 255, 255;  /* #ffffff 白 */
   --alt:     247, 249, 251;  /* #f7f9fb セクション交互背景 */
 }
@@ -26,6 +26,7 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+
 }
 a{
   text-decoration: none;
@@ -308,9 +309,10 @@ section#overview {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
     gap: 3px;
     padding: 5px;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     color: rgba(var(--dullblue), 1);
     font-size: 1rem;
 }
@@ -353,16 +355,10 @@ section#overview {
 .info-section {
   margin: 32px 0;
 }
+.hotel-box{
 
-/* ===== ホテルカード ===== */
-.info-box {
-  background: rgb(var(--card));
-  border: 1px solid rgba(214, 204, 204, 0.5);
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
-
+/* ===== ホテルカード ===== */
 .hotel-name {
   font-size: 1.1rem;
   font-weight: bold;
@@ -485,6 +481,34 @@ section#overview {
   background: rgba(255,255,255,0.7);
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.hotel-notes {
+  margin-top: 1rem;
+}
+
+.hotel-notes h4 {
+  margin-bottom: 0.75rem;
+}
+
+.note-group {
+  margin-bottom: 1rem;
+}
+
+.note-group .badge {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+}
+
+.note-group ul {
+  list-style: none;
+  margin: 0 0 0.5rem 1rem;
+  padding: 0;
+}
+
+.note-group li {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: rgb(var(--ink));
 }
 
 .badge {
@@ -629,7 +653,7 @@ section.timeline-section {
   transform: translateX(-50%) rotate(-2deg); /* 少しナナメにして雰囲気出す */
   width: 120px;
   height: 27px;
-  background: rgba(192, 168, 141, 0.7); /* マステっぽい半透明の色 */
+  background: rgb(241 232 216 / 70%);; /* マステっぽい半透明の色 */
   border-radius: 3px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
