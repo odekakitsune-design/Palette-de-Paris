@@ -618,9 +618,9 @@ section.timeline-section {
 .day-header_contents {
     display: grid;
     grid-template-columns: 72px 1fr;
-    column-gap: 2rem;
+    column-gap: 0.5rem;
     align-items: center;
-    padding: 30px 25px 20px;
+    padding: 30px 15px 20px;
     background: #fbfbfb;
     border: 0.2px solid rgb(221, 219, 216);
     margin: 1.5rem 0;
@@ -772,10 +772,7 @@ section.timeline-section {
 /* パネル内の余白 */
 .panels > .day-panel{
   background: var(--card);
-  border-radius: 12px;
-  padding: 12px;
-
-}
+  border-radius: 12px;}
 
 /* =========================================
    マップ
