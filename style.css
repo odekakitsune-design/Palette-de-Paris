@@ -222,14 +222,16 @@ border-bottom:3px dotted;
 .section.alt{
   background:rgba(var(--alt, 1)) ;
 }
-.section-title{
+.section-title {
   font-size: 1.2rem;
   margin: 0 0 12px;
-  display:flex;
-  align-items:center;
-  gap:.5rem;
+  display: inline-flex; /* 横幅ぴったり */
+  align-items: center;
+  gap: .5rem;
+  position: relative;
+  padding: 0 4px;
+  background: linear-gradient(transparent 60%, rgba(var(--dullblue), 0.3) 60%);
 }
-
 section#overview {
     background: none;
     padding: 0;
@@ -347,105 +349,185 @@ section#overview {
 /* =========================================
    hotelボックス
    ========================================= */
-.hotel-info {
-  font-family: "Noto Sans JP", sans-serif;
-  max-width: 800px;
-  margin: 3em auto;
-  padding: 1em;
-  color: #333;
+/* ===== セクション全体 ===== */
+.info-section {
+  margin: 32px 0;
 }
 
-.hotel-info h2 {
-  font-size: 1.8em;
-  border-left: 6px solid #888;
-  padding-left: 0.6em;
-  margin-bottom: 1em;
-  font-family: "Noto Serif JP", serif;
-}
-
-.info-bubble {
-  background: #f9f9f9;
+/* ===== ホテルカード ===== */
+.info-box {
+  background: rgb(var(--card));
+  border: 1px solid rgba(214, 204, 204, 0.5);
   border-radius: 12px;
-  padding: 1.2em;
-  border: 1px solid #ddd;
-  position: relative;
-  margin-bottom: 2em;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-.info-bubble::before {
+.hotel-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: rgb(var(--wine));
+}
+
+.hotel-name a {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: rgb(var(--dullblue));
+  text-decoration: none;
+  margin-top: 2px;
+}
+
+.hotel-image {
+  margin: 2rem auto;
+  text-align: center;
+  position: relative;
+  width: 90%;
+}
+
+.hotel-image img {
+  max-width:100%;
+  border: 8px solid #fff; /* 写真の白フチ */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 影 */
+  border-radius: 4px; /* 角を少し丸めると柔らかい */
+  transform: rotate(-1.5deg); /* ちょっと傾ける */
+  transition: transform 0.3s ease;
+}
+/* マステ（左上） */
+.hotel-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -12px;
+    width: 80px;
+    height: 20px;
+    background: repeating-linear-gradient(
+    -45deg,              /* ストライプ角度 */
+    #f4efe9 0 6px,       /* ベージュ（背景色と馴染む） */
+    #ffffff 6px 12px     /* 白 */
+  );
+    border-radius: 3px;
+    transform: rotate(330deg);
+    opacity: 0.85;
+    z-index: 1;
+}
+
+/* マステ（右下） */
+.hotel-image::after {
   content: "";
   position: absolute;
-  bottom: -15px;
-  left: 30px;
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
-  border-top-color: #ddd;
+  bottom: 0px;
+  right: -12px;
+  width: 70px;
+  height: 18px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #f4efe9 0 6px,
+    #ffffff 6px 12px
+  );
+  border-radius: 3px;
+  transform: rotate(330deg);
+  opacity: 0.85;
 }
 
-.hotel-info h3 {
-  font-size: 1.4em;
-  margin-top: 2em;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 0.3em;
-}
 
-.nearby-list {
+/* ===== 詳細リスト ===== */
+.hotel-details {
   list-style: none;
-  padding-left: 1em;
-  margin-top: 1em;
+  padding: 0;
+  margin: 12px 0;
 }
 
-.nearby-list li::before {
-  content: "📍 ";
+.hotel-details li {
+  display: flex;          /* アイコンとテキストを横並びに */
+  align-items: flex-start;/* テキストが2行になっても上揃え */
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: rgb(var(--ink));
 }
 
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5em;
-  margin-top: 2em;
+.hotel-details li i {
+    flex: 0 0 20px;
+    color: rgb(var(--wine));
+    margin-right: 0.75rem;
+    text-align: center;
+    margin-top: 0.2rem;
 }
 
-.info-box {
-  background: #fffdf7;
-  border: 1px solid #e2d9c5;
-  border-radius: 8px;
-  padding: 1em;
+.hotel-details li span {
+  flex: 1;                /* 残りのスペースをテキストに割り当て */
+  line-height: 1.5;
 }
 
-.info-box h4 {
-  margin: 0 0 0.5em;
-  font-size: 1.1em;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 0.3em;
+/* ===== 備考・周辺情報 ===== */
+.hotel-notes, .hotel-surroundings {
+    margin-top: 16px;
+    padding: 12px 14px;
+    background: rgb(var(--dullblue),0.2);
+    border-radius: 2px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.08);
+    position: relative;
+    border: 1px solid #ececec;
+    margin: 2rem auto;
 }
 
-.breakfast {
-  background: #f1f1f1;
-  margin-top: 2em;
-  padding: 1em;
-  border-left: 5px solid #bbb;
-  font-style: italic;
-  position: relative;
-}
-
-.breakfast .label {
-  background: #bbb;
-  color: white;
-  padding: 0.2em 0.5em;
-  font-size: 0.85em;
+/* メモの上にテープを貼る */
+.hotel-notes::before,
+.hotel-surroundings::before {
+  content: "";
   position: absolute;
-  top: -0.8em;
-  left: 1em;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 35%;
+  height: 18px;
+  background: rgba(255,255,255,0.7);
   border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
-.area-tag {
-  margin-top: 2em;
-  text-align: right;
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
   font-weight: bold;
-  color: #666;
+  padding: 2px 6px;
+  margin-right: 6px;
+  border-radius: 8px;
+  color: white;
+}
+
+/* 無し（グレー） */
+.badge-none   { background: rgb(var(--ink), 0.7); }
+/* 部屋（くすみグリーン） */
+.badge-room   { background: #b8ca98; }
+/* 共用部（くすみブルー） */
+.badge-shared { background: rgb(var(--dullblue)); }
+/* 周辺（テラコッタベージュ） */
+.badge-around { background: #e2b08e; }
+
+/* 見出し */
+.hotel-notes h4,
+.hotel-surroundings h4 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: #3b669e;
+  font-weight: bold;
+}
+
+/* 本文 */
+.hotel-notes p,
+.hotel-surroundings ul li {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 4px 0;
+}
+
+/* ===== 地図 ===== */
+.hotel-map {
+  margin-top: 16px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 
@@ -516,6 +598,7 @@ section.timeline-section {
   background: #fff;
   margin-top: -1px; /* ← tabs と隙間なく接続 */
   border-radius: 0 0 12px 12px; /* 下だけ丸く */
+  padding: 1rem;
 }
 
 /* パネル表示切替 */
@@ -524,15 +607,31 @@ section.timeline-section {
 
 /* --- ヘッダー（x日目／テーマ／AM/PM） --- */
 .day-header{
-  display: grid;
-  grid-template-columns: 72px 1fr; /* 左：日数ボックス／右：テーマ＋AMPM */
-  column-gap: 14px;
-  align-items: center;
-  padding: 12px;
-  background: #fff;
-  border-radius: 12px;
-  border:1px solid rgb(214, 204, 204,0.5);
-  margin: 8px 0 12px;
+  display: block;
+}
+.day-header_contents {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    column-gap: 2rem;
+    align-items: center;
+    padding: 30px 25px 20px;
+    background: #fbfbfb;
+    border: 0.2px solid rgb(221, 219, 216);
+    margin: 1.5rem 0;
+    position: relative;
+    box-shadow: 1px 2px 10px rgb(0 0 0 / 12%);
+  }
+.day-header_contents::before {
+  content: "";
+  position: absolute;
+  top: -15px; /* 少しはみ出す */
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg); /* 少しナナメにして雰囲気出す */
+  width: 120px;
+  height: 27px;
+  background: rgba(192, 168, 141, 0.7); /* マステっぽい半透明の色 */
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 .day-label{
   display:flex; align-items:center; justify-content:center;
@@ -550,6 +649,7 @@ section.timeline-section {
   display: flex;
   gap: 6px;       /* 横並びなら gap だけ */
   flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .tag {
@@ -647,7 +747,8 @@ section.timeline-section {
   --cat-sight:  #e2b08e; /* テラコッタベージュ */
   --cat-spot:   #e2b08e; /* テラコッタベージュ */
   --cat-meal:   #d4b4b4; /* ダスティピンク */
-  --cat-hotel:  #b8ca98; /* ペールグリーン */
+  --cat-hotel:  #b8ca98;
+  --cat-other:  rgb(177, 177, 177); /* ペールグリーン */
 }
 
 .icon.taxi i   { color: var(--cat-taxi); }
@@ -659,7 +760,8 @@ section.timeline-section {
 .icon.meal i   { color: var(--cat-meal); }
 .icon.hotel i  { color: var(--cat-hotel); }
 .icon.spot i   { color: var(--cat-spot); }
-
+.icon.spot i   { color: var(--cat-spot); }
+.icon.other i { color: rgb(177, 177, 177,1); /* その他はインク色 */
 
 /* パネル内の余白 */
 .panels > .day-panel{

@@ -83,46 +83,55 @@ days.forEach((day, idx) => {
     panel.className = 'day-panel';
     if (idx === 0) panel.classList.add('active');
 
-    /* --- ヘッダー --- */
-    const header = document.createElement('div');
-    header.className = 'day-header';
+/* --- ヘッダー --- */
+const header = document.createElement('div');
+header.className = 'day-header';
 
-    const dl = document.createElement('div');
-    dl.className = 'day-label';
-    dl.textContent = day.dayLabel || `${idx+1}日目`;
+// 中身をまとめるラッパー
+const contents = document.createElement('div');
+contents.className = 'day-header_contents';
 
-    // テーマ + AM/PMタグ
-    const theme = document.createElement('div');
-    theme.className = 'day-theme';
-    if (day.theme) {
-      // セル内の改行を <br> に変換
-      theme.innerHTML = String(day.theme).replace(/\r?\n/g, '<br>');
-    }
+const dl = document.createElement('div');
+dl.className = 'day-label';
+dl.textContent = day.dayLabel || `${idx+1}日目`;
 
-    const tags = document.createElement('div');
-    tags.className = 'tags';
+// テーマ + AM/PMタグ
+const theme = document.createElement('div');
+theme.className = 'day-theme';
+if (day.theme) {
+  // セル内の改行を <br> に変換
+  theme.innerHTML = String(day.theme).replace(/\r?\n/g, '<br>');
+}
 
-    if (day.am) {
-      const am = document.createElement('span');
-      am.className = 'tag am';
-      am.innerHTML = `<strong>AM</strong>&nbsp;${String(day.am).replace(/\r?\n/g, '<br>')}`;
-      tags.appendChild(am);
-    }
+const tags = document.createElement('div');
+tags.className = 'tags';
 
-    if (day.pm) {
-      const pm = document.createElement('span');
-      pm.className = 'tag pm';
-      pm.innerHTML = `<strong>PM</strong>&nbsp;${String(day.pm).replace(/\r?\n/g, '<br>')}`;
-      tags.appendChild(pm);
-    }
+if (day.am) {
+  const am = document.createElement('span');
+  am.className = 'tag am';
+  am.innerHTML = `<strong>AM</strong>&nbsp;${String(day.am).replace(/\r?\n/g, '<br>')}`;
+  tags.appendChild(am);
+}
 
+if (day.pm) {
+  const pm = document.createElement('span');
+  pm.className = 'tag pm';
+  pm.innerHTML = `<strong>PM</strong>&nbsp;${String(day.pm).replace(/\r?\n/g, '<br>')}`;
+  tags.appendChild(pm);
+}
 
-    header.appendChild(dl);
-    const rightWrap = document.createElement('div');
-    rightWrap.appendChild(theme);
-    rightWrap.appendChild(tags);
-    header.appendChild(rightWrap);
-    panel.appendChild(header);
+const rightWrap = document.createElement('div');
+rightWrap.appendChild(theme);
+rightWrap.appendChild(tags);
+
+// ここで contents に全部入れる
+contents.appendChild(dl);
+contents.appendChild(rightWrap);
+
+// header に contents を入れる
+header.appendChild(contents);
+panel.appendChild(header);
+
 
     /* --- タイムライン --- */
     (day.items || []).forEach(item => {
@@ -150,7 +159,7 @@ days.forEach((day, idx) => {
         spot:   'fa-location-dot'
       };
       const fa = document.createElement('i');
-      fa.className = `fas ${(item.icon && /^fa-/.test(item.icon)) ? item.icon : (FA_ICON[item.type] || 'fa-circle')}`;
+      fa.className = `fas ${(item.icon && /^fa-/.test(item.icon)) ? item.icon : (FA_ICON[item.type] || 'fa-check')}`;
       icon.appendChild(fa);
       row.appendChild(icon);
 
