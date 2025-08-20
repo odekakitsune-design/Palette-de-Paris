@@ -301,7 +301,7 @@ section#overview {
   display: block;
   width: 100%;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: rgba(var(--ink), 1);
 }
 
@@ -310,9 +310,9 @@ section#overview {
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    gap: 3px;
+    gap: 2px;
     padding: 5px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     color: rgba(var(--dullblue), 1);
     font-size: 1rem;
 }
@@ -492,11 +492,13 @@ section#overview {
 
 .note-group {
   margin-bottom: 1rem;
+  margin-left: 1.5rem;
 }
 
 .note-group .badge {
-  display: inline-block;
-  margin-bottom: 0.3rem;
+    display: inline-block;
+    margin-bottom: 0.3rem;
+    padding: 5px 1rem;
 }
 
 .note-group ul {
@@ -506,7 +508,6 @@ section#overview {
 }
 
 .note-group li {
-  margin: 0.25rem 0;
   font-size: 0.9rem;
   color: rgb(var(--ink));
 }
@@ -517,26 +518,26 @@ section#overview {
   font-weight: bold;
   padding: 2px 6px;
   margin-right: 6px;
-  border-radius: 8px;
-  color: white;
 }
 
 /* 無し（グレー） */
-.badge-none   { background: rgb(var(--ink), 0.7); }
+.badge-none   { background: rgba(194, 194, 194, 0.7); }
 /* 部屋（くすみグリーン） */
-.badge-room   { background: #b8ca98; }
+.badge-room   { background: rgb(193, 209, 166); }
 /* 共用部（くすみブルー） */
-.badge-shared { background: rgb(var(--dullblue)); }
-/* 周辺（テラコッタベージュ） */
-.badge-around { background: #e2b08e; }
-
+.badge-shared { background: rgb(231, 190, 163); }
 /* 見出し */
-.hotel-notes h4,
-.hotel-surroundings h4 {
-  font-size: 1rem;
-  margin-bottom: 6px;
-  color: #3b669e;
-  font-weight: bold;
+.hotel-notes h4, .hotel-surroundings h4 {
+    margin: 1rem 0.5rem;
+    color: #3c5575;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    position: relative;
+    padding: 0 4px;
+    background: linear-gradient(transparent 60%, rgba(var(--dullblue), 0.3) 60%);
+    font-weight: normal;
 }
 
 /* 本文 */
@@ -806,20 +807,10 @@ section.timeline-section {
 }
 
 /* =========================================
-   チェックリスト
+   旅行情報
    ========================================= */
-.checklist{
-  list-style: none;
-  margin: 8px 0 16px;
-  padding: 0;
-}
-.checklist li{
-  padding: 8px 10px;
-  border:1px solid rgba(0,0,0,0.08);
-  border-radius: 8px;
-  background:#fff;
-  margin-bottom:8px;
-}
+
+
 
 /* =========================================
    PC向け：中央余白レイアウト（768px以上）
