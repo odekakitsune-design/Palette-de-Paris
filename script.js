@@ -68,14 +68,14 @@ function renderTabs(days) {
   tabsContainer.innerHTML = '';
   panelsContainer.innerHTML = '';
 
-  // タブ生成
-  days.forEach((day, idx) => {
-    const btn = document.createElement('button');
-    btn.textContent = day.label;
-    btn.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
-    btn.addEventListener('click', () => selectTab(idx));
-    tabsContainer.appendChild(btn);
-  });
+// タブ生成
+days.forEach((day, idx) => {
+  const btn = document.createElement('button');
+  btn.innerHTML = String(day.label).replace(/\r?\n/g, '<br>'); // ← 改行を反映
+  btn.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+  btn.addEventListener('click', () => selectTab(idx));
+  tabsContainer.appendChild(btn);
+});
 
   // パネル生成
   days.forEach((day, idx) => {
@@ -91,25 +91,31 @@ function renderTabs(days) {
     dl.className = 'day-label';
     dl.textContent = day.dayLabel || `${idx+1}日目`;
 
-    // 右側（テーマ + AM/PMタグ）
+    // テーマ + AM/PMタグ
     const theme = document.createElement('div');
     theme.className = 'day-theme';
-    theme.textContent = day.theme || '';
+    if (day.theme) {
+      // セル内の改行を <br> に変換
+      theme.innerHTML = String(day.theme).replace(/\r?\n/g, '<br>');
+    }
 
     const tags = document.createElement('div');
     tags.className = 'tags';
-    if (day.am){
+
+    if (day.am) {
       const am = document.createElement('span');
       am.className = 'tag am';
-      am.innerHTML = `<strong>AM</strong>&nbsp;${day.am}`;
+      am.innerHTML = `<strong>AM</strong>&nbsp;${String(day.am).replace(/\r?\n/g, '<br>')}`;
       tags.appendChild(am);
     }
-    if (day.pm){
+
+    if (day.pm) {
       const pm = document.createElement('span');
       pm.className = 'tag pm';
-      pm.innerHTML = `<strong>PM</strong>&nbsp;${day.pm}`;
+      pm.innerHTML = `<strong>PM</strong>&nbsp;${String(day.pm).replace(/\r?\n/g, '<br>')}`;
       tags.appendChild(pm);
     }
+
 
     header.appendChild(dl);
     const rightWrap = document.createElement('div');
@@ -126,7 +132,7 @@ function renderTabs(days) {
 
       const time = document.createElement('div');
       time.className = 'time';
-      time.textContent = item.time || '';
+      time.innerHTML = String(item.time || '').replace(/\r?\n/g, '<br>');
       row.appendChild(time);
 
       // アイコン
@@ -153,7 +159,7 @@ function renderTabs(days) {
 
       const title = document.createElement('div');
       title.className = 'title';
-      title.textContent = item.text || '';
+      title.innerHTML = String(item.text || '').replace(/\r?\n/g, '<br>');
       event.appendChild(title);
 
       // details処理（配列 or オブジェクト）

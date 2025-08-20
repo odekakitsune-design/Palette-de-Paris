@@ -345,6 +345,111 @@ section#overview {
 }
 
 /* =========================================
+   hotelボックス
+   ========================================= */
+.hotel-info {
+  font-family: "Noto Sans JP", sans-serif;
+  max-width: 800px;
+  margin: 3em auto;
+  padding: 1em;
+  color: #333;
+}
+
+.hotel-info h2 {
+  font-size: 1.8em;
+  border-left: 6px solid #888;
+  padding-left: 0.6em;
+  margin-bottom: 1em;
+  font-family: "Noto Serif JP", serif;
+}
+
+.info-bubble {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 1.2em;
+  border: 1px solid #ddd;
+  position: relative;
+  margin-bottom: 2em;
+}
+
+.info-bubble::before {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 30px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #ddd;
+}
+
+.hotel-info h3 {
+  font-size: 1.4em;
+  margin-top: 2em;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.3em;
+}
+
+.nearby-list {
+  list-style: none;
+  padding-left: 1em;
+  margin-top: 1em;
+}
+
+.nearby-list li::before {
+  content: "📍 ";
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5em;
+  margin-top: 2em;
+}
+
+.info-box {
+  background: #fffdf7;
+  border: 1px solid #e2d9c5;
+  border-radius: 8px;
+  padding: 1em;
+}
+
+.info-box h4 {
+  margin: 0 0 0.5em;
+  font-size: 1.1em;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.3em;
+}
+
+.breakfast {
+  background: #f1f1f1;
+  margin-top: 2em;
+  padding: 1em;
+  border-left: 5px solid #bbb;
+  font-style: italic;
+  position: relative;
+}
+
+.breakfast .label {
+  background: #bbb;
+  color: white;
+  padding: 0.2em 0.5em;
+  font-size: 0.85em;
+  position: absolute;
+  top: -0.8em;
+  left: 1em;
+  border-radius: 4px;
+}
+
+.area-tag {
+  margin-top: 2em;
+  text-align: right;
+  font-weight: bold;
+  color: #666;
+}
+
+
+/* =========================================
    基本情報（グリッド）
    ========================================= */
 .grid{
@@ -376,11 +481,13 @@ section.timeline-section {
   grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); /* 可変数に対応 */
   gap: 0px;
   margin: 0;
+  color:rgba(var(--dullblue), 1)
 }
 
 .timeline-section .tabs > button {
   appearance: none;
   border: 2px solid rgba(var(--dullblue), 1);
+  color:rgba(var(--ink), 1);
   background: #e5ebee;
   border-radius: 12px 12px 0 0;  /* ← 上丸・下まっすぐ */
   padding: 0.5rem 5px;
