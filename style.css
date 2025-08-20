@@ -809,6 +809,231 @@ section.timeline-section {
 /* =========================================
    旅行情報
    ========================================= */
+/* =========================================
+   hotelボックス
+   ========================================= */
+/* ===== セクション全体 ===== */
+.info-section {
+  margin: 32px 0;
+}
+.tips-box{
+
+}
+/* ===== ホテルカード ===== */
+.tips-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: rgb(var(--wine));
+}
+
+.tips-name a {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: rgb(var(--dullblue));
+  text-decoration: none;
+  margin-top: 2px;
+}
+
+.tips-image {
+  margin: 2rem auto;
+  text-align: center;
+  position: relative;
+  width: 90%;
+}
+
+.tips-image img {
+  max-width:100%;
+  border: 8px solid #fff; /* 写真の白フチ */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 影 */
+  border-radius: 4px; /* 角を少し丸めると柔らかい */
+  transform: rotate(-1.5deg); /* ちょっと傾ける */
+  transition: transform 0.3s ease;
+}
+/* マステ（左上） */
+.tips-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -12px;
+    width: 80px;
+    height: 20px;
+    background: repeating-linear-gradient(
+    -45deg,              /* ストライプ角度 */
+    #f4efe9 0 6px,       /* ベージュ（背景色と馴染む） */
+    #ffffff 6px 12px     /* 白 */
+  );
+    border-radius: 3px;
+    transform: rotate(330deg);
+    opacity: 0.85;
+    z-index: 1;
+}
+
+/* マステ（右下） */
+.tips-image::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  right: -12px;
+  width: 70px;
+  height: 18px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #f4efe9 0 6px,
+    #ffffff 6px 12px
+  );
+  border-radius: 3px;
+  transform: rotate(330deg);
+  opacity: 0.85;
+}
+
+
+/* ===== 詳細リスト ===== */
+.tips-details {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+
+.tips-details li {
+  display: flex;          /* アイコンとテキストを横並びに */
+  align-items: flex-start;/* テキストが2行になっても上揃え */
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: rgb(var(--ink));
+}
+
+.tips-details li i {
+    flex: 0 0 20px;
+    color: rgb(var(--wine));
+    margin-right: 0.75rem;
+    text-align: center;
+    margin-top: 0.2rem;
+}
+
+.tips-details li span {
+  flex: 1;                /* 残りのスペースをテキストに割り当て */
+  line-height: 1.5;
+}
+
+/* ===== 備考・周辺情報 ===== */
+.tips-notes, .tips-surroundings {
+    margin-top: 16px;
+    padding: 12px 14px;
+    background: rgb(var(--dullblue),0.2);
+    border-radius: 2px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.08);
+    position: relative;
+    border: 1px solid #ececec;
+    margin: 2rem auto;
+}
+
+/* メモの上にテープを貼る */
+.tips-notes::before,
+.tips-surroundings::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 35%;
+  height: 18px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.tips-notes {
+  margin-top: 1rem;
+}
+
+.tips-notes h4 {
+  margin-bottom: 0.75rem;
+}
+
+.note-group {
+  margin-bottom: 1rem;
+  margin-left: 1.5rem;
+}
+
+.note-group .badge {
+    display: inline-block;
+    margin-bottom: 0.3rem;
+    padding: 5px 1rem;
+}
+
+.note-group ul {
+  list-style: none;
+  margin: 0 0 0.5rem 1rem;
+  padding: 0;
+}
+
+.note-group li {
+  font-size: 0.9rem;
+  color: rgb(var(--ink));
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  margin-right: 6px;
+}
+
+/* 無し（グレー） */
+.badge-none   { background: rgba(194, 194, 194, 0.7); }
+/* 部屋（くすみグリーン） */
+.badge-room   { background: rgb(193, 209, 166); }
+/* 共用部（くすみブルー） */
+.badge-shared { background: rgb(231, 190, 163); }
+/* 見出し */
+.tips-notes h4, .tips-surroundings h4 {
+    margin: 1rem 0.5rem;
+    color: #3c5575;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    position: relative;
+    padding: 0 4px;
+    background: linear-gradient(transparent 60%, rgba(var(--dullblue), 0.3) 60%);
+    font-weight: normal;
+}
+
+/* 本文 */
+.tips-notes p,
+.tips-surroundings ul li {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 4px 0;
+}
+
+/* ===== 地図 ===== */
+.tips-map {
+  margin-top: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+/* =========================================
+   基本情報（グリッド）
+   ========================================= */
+.grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.grid-item{
+  background:#fff;
+  border:1px solid rgba(0,0,0,0.06);
+  border-radius:10px;
+  padding:10px;
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+}
 
 
 
