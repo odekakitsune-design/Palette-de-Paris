@@ -1161,16 +1161,16 @@ section.timeline-section {
 }
 .timeline .icon i{ font-size: 1.35rem; }
 
-/* === 通常イベント（●のみ。線は描かない） === */
+/* === 通常イベント === */
 .timeline:not(.move) .icon::before,
 .timeline:not(.move) .icon::after {
   content: none;
 }
 .timeline.move .icon {
   text-align: left;
-  margin-left: 10px; /* ★をちょっと右に寄せる */
+  margin-left: 10px; 
 }
-/* === 移動イベント（左に点線＋右に★） === */
+/* === 移動イベント === */
 .timeline.move {
   text-align: left;
   position: relative;
@@ -1196,7 +1196,27 @@ section.timeline-section {
 /* 移動イベントの備考は liドット無し */
 .timeline.move .event ul.details{
   list-style: none;
-  margin-left: 1.2rem;
+}
+.timeline.move .event ul.details li {
+  list-style: none;
+  font-size: 0.8rem;
+  color:#8f9c9e;
+}
+.timeline.move .event{
+  color:#515e61;
+}
+.event ul.details {
+    list-style: none;  /* ← これで●が消える */
+    padding-left: 0.8rem;   /* ← インデントも消したい場合 */
+    margin: 0;        /* ← 必要に応じて余白もリセット */
+}
+.event div.title {
+    font-size: 0.9rem;
+}
+
+.event ul.details li {
+    font-size: 0.8rem;
+     color:#757575;
 }
 
 
