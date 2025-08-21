@@ -152,7 +152,7 @@ panel.appendChild(header);
         bus:    'fa-bus',
         train:  'fa-train',
         walk:   'fa-person-walking',
-        flight: 'fa-plane-departure',
+        flight: 'fa-plane',
         sight:  'fa-landmark',
         meal:   'fa-utensils',
         hotel:  'fa-hotel',

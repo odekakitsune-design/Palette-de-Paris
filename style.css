@@ -1,3 +1,4 @@
+
 /* =========================================
    基本設定（SPファースト＋PC余白背景）
    ========================================= */
@@ -8,9 +9,20 @@
   --dullblue:150, 175, 209; /* #7995bb; くすみブルー */
   --wine:    123, 63, 74;    /* #7b3f4a ワインレッド */
   --ink:     75, 73, 69;     /* rgb(75, 73, 69) インク（濃いグレー） */
-  --card:    255, 255, 255;  /* #ffffff 白 */
-  --alt:     247, 249, 251;  /* #f7f9fb セクション交互背景 */
+  --card:    245, 241, 237;   /* #f7f9fb 薄いベージュ */
+  --alt:     255, 255, 255, 0;  /* #ffffff セクション交互背景 */
 }
+
+
+/* =========================================
+:root {
+  --beige:   rgb(235, 234, 229); 
+  --dullblue:rgba(150, 175, 209);
+  --wine:    rgba(123, 63, 74);
+  --ink:     rgba(75, 73, 69);
+  --card:    rgb(245, 241, 237);
+  --alt:     rgba(255, 255, 255, 0);}
+   ========================================= */
 
 /* 全体 */
 *{ box-sizing: border-box; }
@@ -18,10 +30,11 @@ html, body{ margin:0; padding:0; }
 body{
   font-family: 'Kiwi Maru', serif;
   color:rgba(var(--ink, 1));
-  background:rgba(var(--beige, 1));
   font-size: 13px;
   font-weight: normal;
-
+  border: 1px solid #ececec;
+  background-image: linear-gradient(to right, rgba(241, 241, 241, 0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(241, 241, 241, 0.5) 1px, transparent 1px);
+  background-size: 10px 10px; /* マス目のサイズ */
 }
 img {
   display: block;
@@ -41,7 +54,6 @@ a{
   width: 100%;
   max-width: 768px;
   margin: 0 auto;
-  padding: 0 16px;
 }
 
 /* =========================================
@@ -216,22 +228,21 @@ border-bottom:3px dotted;
    ========================================= */
 .section{
   background:rgba(var(--card, 1));
-  border-radius: 5px;
   padding: 16px;
-  margin: 16px 0;
+  margin: 3rem 0;
 }
-.section.alt{
-  background:rgba(var(--alt, 1)) ;
+.section.alt {
+    background: rgba(var(--alt, 1));
+    margin: 0rem auto 2rem;
+    padding: 0rem 1rem 1rem;
 }
 .section-title {
   font-size: 1.2rem;
-  margin: 0 0 12px;
-  display: inline-flex; /* 横幅ぴったり */
-  align-items: center;
-  gap: .5rem;
+  margin: 1rem auto 1.5rem;
+  display: block;
   position: relative;
   padding: 0 4px;
-  background: linear-gradient(transparent 60%, rgba(var(--dullblue), 0.3) 60%);
+  text-align: center;
 }
 section#overview {
     background: none;
@@ -239,13 +250,14 @@ section#overview {
     margin: 2rem auto;
 }
 
+
 /* =========================================
    カード（概要・スポット・特別）
    ========================================= */
 .cards{
-  display:grid;
+  /* display:grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 12px; */
 }
 .card{
   background:#fff;
@@ -276,10 +288,10 @@ section#overview {
 }
 .overview-cards {
   position: relative;
-  margin: 2em 0;
-  padding: 1em 2em;
-  border-top: solid 3px rgba(255, 255, 255, 1);
-  border-bottom: solid 3px rgba(255, 255, 255, 1);
+  margin: 1rem 0.75rem;
+  padding: 1em 1em 1.5rem;
+  border-top: solid 2px  rgb(202, 129, 126);
+  border-bottom: solid 2px rgb(202, 129, 126);
   font-weight: bold;
 }
 .overview-cards:before, .overview-cards:after {
@@ -288,7 +300,7 @@ section#overview {
   width: 2px;
   height: -webkit-calc(100% + 24px);
   height: calc(100% + 24px);
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(var(--dullblue), 1);
   content: "";
 }
 .overview-cards:before {
@@ -313,24 +325,22 @@ section#overview {
     gap: 2px;
     padding: 5px;
     letter-spacing: 1px;
-    color: rgba(var(--dullblue), 1);
+    color: rgba(var(--ink), 1);
     font-size: 1rem;
 }
-.fukidashi::before {
+.fukidashi::before,.fukidashi::after {
   content: "";
   width: 30px;
-  height: 3px;
-  transform: rotate(60deg);
+  height: 2px;
   box-sizing: border-box;
-  background-color: rgba(var(--dullblue), 1);
+  border-radius: 10px;
+  background-color: rgba(var(--ink), 1);
+}
+.fukidashi::before {
+  transform: rotate(60deg);
 }
 .fukidashi::after {
-  content: "";
-  width: 30px;
-  height: 3px;
   transform: rotate(-60deg);
-  box-sizing: border-box;
-  background-color: rgba(var(--dullblue), 1);
 }
 
 /* =========================================
@@ -364,17 +374,17 @@ section#overview {
   font-weight: bold;
   margin-bottom: 8px;
   color: rgb(var(--wine));
+  text-align:  center;
 }
 
 .hotel-name a {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: normal;
-  color: rgb(var(--dullblue));
-  text-decoration: none;
-  margin-top: 2px;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: normal;
+    color: rgb(var(--dullblue));
+    text-decoration: none;
+    margin: 5px auto;
 }
-
 .hotel-image {
   margin: 2rem auto;
   text-align: center;
@@ -460,31 +470,28 @@ section#overview {
 .hotel-notes, .hotel-surroundings {
     margin-top: 16px;
     padding: 12px 14px;
-    background: rgb(185 181 177 / 20%);
+    background: rgb(249 249 249);
     border-radius: 2px;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.08);
+    box-shadow: 2px 2px 6px rgb(171 171 171 / 50%);
     position: relative;
-    border: 1px solid #ececec;
+    border: 1px solid #d1d1d1;
     margin: 2.5rem auto;
 }
 
 /* メモの上にテープを貼る */
-.hotel-notes::before,
-.hotel-surroundings::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-2deg);
-  width: 35%;
-  height: 20px;
-  background: rgba(255,255,255,0.7);
-  border-radius: 4px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-      /* ほぼ透明ベース＋白ドット */
+.hotel-notes::before, .hotel-surroundings::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 35%;
+    height: 25px;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     background-color: rgba(255, 255, 255, 0.76);
-    background-image: radial-gradient(circle, rgba(223, 220, 220, 0.9) 2px, transparent 2px);
-    background-size: 5px 5px; /* ドットの間隔 */
+    background-image: radial-gradient(circle, rgba(223, 220, 220, 0.5) 2px, transparent 2px);
+    background-size: 5px 5px;
 }
 
 .hotel-notes h4 {
@@ -556,13 +563,463 @@ section#overview {
   overflow: hidden;
 }
 
+
+/* =========================================
+   マップ
+   ========================================= */
+.map-wrap iframe{
+  width: 100%;
+  height: 300px;
+  border:0;
+  border-radius: 10px;
+}
+
+/* =========================================
+   旅行情報
+   ========================================= */
+/* ===== セクション全体 ===== */
+.info-section {
+  margin: 32px 0;
+}
+.tips-box{
+
+}
+/* ===== ホテルカード ===== */
+.tips-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: rgb(var(--wine));
+  text-align: center;
+}
+
+.tips-name a {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: rgb(var(--dullblue));
+  text-decoration: none;
+  margin-top: 2px;
+}
+
+.tips-image {
+  margin: 2rem auto;
+  text-align: center;
+  position: relative;
+  width:100%;
+  object-fit: cover;
+}
+
+.tips-image img {
+  max-width:100%;
+  border: 8px solid #fff; /* 写真の白フチ */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 影 */
+  border-radius: 4px; /* 角を少し丸めると柔らかい */
+  /*transform: rotate(-1.5deg);  ちょっと傾ける */
+  transition: transform 0.3s ease;
+}
+/* マステ（左上） */
+.tips-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -12px;
+    width: 80px;
+    height: 20px;
+    background: repeating-linear-gradient(
+    -45deg,              /* ストライプ角度 */
+    #dbc9cdcc 0 6px,       /* ベージュ（背景色と馴染む） */
+    #ffffff 6px 12px     /* 白 */
+  );
+    border-radius: 3px;
+    transform: rotate(330deg);
+    opacity: 0.85;
+    z-index: 1;
+}
+
+/* マステ（右下） */
+.tips-image::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  right: -12px;
+  width: 70px;
+  height: 18px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #dbc9cdcc 0 6px,
+    #ffffff 6px 12px
+  );
+  border-radius: 3px;
+  transform: rotate(330deg);
+  opacity: 0.85;
+}
+
+
+/* ===== 詳細リスト ===== */
+.tips-details {
+  list-style: none;
+  padding: 0;
+  margin:1rem;
+}
+
+.tips-details li {
+  display: flex;          /* アイコンとテキストを横並びに */
+  align-items: flex-start;/* テキストが2行になっても上揃え */
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: rgb(var(--ink));
+}
+
+.tips-details li i {
+    flex: 0 0 20px;
+    color: rgb(var(--wine));
+    margin-right: 0.75rem;
+    text-align: center;
+    margin-top: 0.2rem;
+}
+
+.tips-details li span {
+  flex: 1;                /* 残りのスペースをテキストに割り当て */
+  line-height: 1.5;
+}
+
+/* ===== 備考・周辺情報 ===== */
+.tips-notes, .tips-surroundings {
+    margin-top: 16px;
+    padding: 12px 14px;
+    background: rgb(239 238 237);
+    border-radius: 2px;
+    box-shadow: 2px 2px 6px rgba(218, 216, 215,0.5);
+    position: relative;
+    border: 1px solid rgb(218, 216, 215);
+    margin: 2.5rem auto;
+}
+
+/* メモの上にテープを貼る */
+.tips-notes::before,
+.tips-surroundings::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 30%;
+  height: 25px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      /* ほぼ透明ベース＋白ドット */
+    background-color: rgba(255, 255, 255, 0.76);
+    background-image: radial-gradient(circle, rgba(159, 170, 196, 0.5) 2px, transparent 2px);
+    background-size: 8px 8px; /* ドットの間隔 */
+}
+
+.tips-notes h4 {
+  margin-bottom: 0.75rem;
+}
+
+.note-group {
+  margin-bottom: 1rem;
+  margin-left: 1.5rem;
+}
+
+.note-group .badge {
+    display: inline-block;
+    margin-bottom: 0.3rem;
+    padding: 5px 1rem;
+}
+
+.note-group ul {
+  list-style: none;
+  margin: 0 0 0.5rem 1rem;
+  padding: 0;
+}
+
+.note-group li {
+  font-size: 0.9rem;
+  color: rgb(var(--ink));
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  margin-right: 6px;
+}
+
+/* 無し（グレー） */
+.badge-none   { background: rgba(194, 194, 194, 0.7); }
+/* 部屋（くすみグリーン） */
+.badge-room   { background: rgb(193, 209, 166); }
+/* 共用部（くすみブルー） */
+.badge-shared { background: rgb(231, 190, 163); }
+/* 見出し */
+.tips-notes h4, .tips-surroundings h4 {
+    margin: 1rem 0.5rem;
+    color: #3c5575;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    position: relative;
+    padding: 0 4px;
+    background: linear-gradient(transparent 60%, rgba(var(--dullblue), 0.3) 60%);
+    font-weight: normal;
+}
+
+/* 本文 */
+.tips-notes p,
+.tips-surroundings ul li {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 4px 0;
+}
+
+/* ===== 地図 ===== */
+.tips-map {
+  margin-top: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+/* ===== おまけ ===== */
+.tips-extra-card {
+  background: #fff;
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: relative;
+  border: 1px solid #ececec;
+}
+
+.tips-extra-card::before {
+content: "";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 120px;
+    height: 27px;
+    background: rgb(241 232 216 / 70%);
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.tips-extra-card h4 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #3c5575;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 4px;
+  background: linear-gradient(transparent 60%, rgba(122,138,161,0.2) 60%);
+  font-weight: normal;
+}
+
+.tips-extra-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tips-extra-card li {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  margin: 6px 0;
+  position: relative;
+  padding-left: 16px;
+}
+.tips-extra-card .french {
+  font-size: 0.9rem;
+  color:rgb(114, 110, 100);
+  font-style: italic;
+}
+.tips-extra-card li::before {
+  content: "◇";
+  position: absolute;
+  margin-right: 1.5rem;
+  left: 0;
+  color: rgba(123,63,74,0.8); /* ワイン系カラーで可愛く */
+}
+
+/* =========================================
+   フライト情報
+   ========================================= */
+.ticket-card {
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 16px 0;
+  position: relative;
+}
+
+/* ===== パンチ穴 ===== */
+.ticket-card::before,
+.ticket-card::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: rgba(var(--card)); /* 背景色に合わせる */
+  border-radius: 50%;
+  box-shadow: inset 0 0 3px rgba(0,0,0,0.15);
+  z-index: 2;
+}
+.ticket-card::before {
+  left: -10px;
+}
+.ticket-card::after {
+  right: -10px;
+}
+
+/* ===== 左側カラー帯 ===== */
+.ticket-left {
+    color: #fff;
+    padding: 16px 8px 16px 1rem;
+    text-align: left;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    position: relative;
+}
+.ticket-left.going {
+  background: linear-gradient(135deg, #97aa95, #95a6aa); 
+}
+.ticket-left.return {
+  background: linear-gradient(135deg, #bb8e8e, #d8b677); 
+}
+/* 左右の切り取り線（点線） */
+.ticket-left::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  border-right: 2px dashed #ffffff;
+  z-index: 1;
+}
+
+.ticket-date {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.ticket-airline {
+  font-size: 0.8rem;
+}
+
+/* ===== 右側本文 ===== */
+.ticket-right {
+  background: #fff;
+  flex: 1;
+  padding: 16px 1rem 16px 8px;
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ticket-flight {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.airport {
+  text-align: center;
+}
+.airport .time {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: block;
+}
+.airport .code {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+.airport .city {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.arrow {
+  font-size: 1.3rem;
+  color: #999;
+}
+
+.ticket-info p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #555;
+}
+.ticket-info span{
+  font-size: 0.75rem;
+  display: block;
+  margin-bottom: 5px;
+  color: #999;
+}
+/* =========================================
+   持ち物リスト
+   ========================================= */
+
+
+.checklist-group {
+    margin: 0.5rem 1rem;
+}
+
+.checklist-group h5 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: #555;
+  font-weight: 600;
+}
+
+.checklist-group h5 i {
+  margin-right: 6px;
+
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin-left: 1rem;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 26px;
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* ✓マーク */
+.checklist li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: rgb(var(--wine)); 
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.2;
+}
 /* =========================================
    日程タブ＆タイムライン
    ========================================= */
 
 /* ノートインデックスタブ風デザイン */
 section.timeline-section {
-    margin-top: 2rem;
+    margin: 2rem 0.75rem;
 }
 .timeline-section .tabs {
   display: grid;
@@ -605,6 +1062,7 @@ section.timeline-section {
   margin-top: -1px; /* ← tabs と隙間なく接続 */
   border-radius: 0 0 8px 8px; /* 下だけ丸く */
   padding: 1rem;
+  box-shadow: 5px 10px 15px -10px #5d5552;
 }
 
 /* パネル表示切替 */
@@ -626,6 +1084,7 @@ section.timeline-section {
     margin: 1.5rem 0;
     position: relative;
     box-shadow: 1px 2px 10px rgb(0 0 0 / 12%);
+    transform: rotate(-1deg);
   }
 .day-header_contents::before {
   content: "";
@@ -773,293 +1232,6 @@ section.timeline-section {
 .panels > .day-panel{
   background: var(--card);
   border-radius: 12px;}
-
-/* =========================================
-   マップ
-   ========================================= */
-.map-wrap iframe{
-  width: 100%;
-  height: 300px;
-  border:0;
-  border-radius: 10px;
-}
-
-/* =========================================
-   旅行情報
-   ========================================= */
-/* =========================================
-   hotelボックス
-   ========================================= */
-/* ===== セクション全体 ===== */
-.info-section {
-  margin: 32px 0;
-}
-.tips-box{
-
-}
-/* ===== ホテルカード ===== */
-.tips-name {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: rgb(var(--wine));
-}
-
-.tips-name a {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: normal;
-  color: rgb(var(--dullblue));
-  text-decoration: none;
-  margin-top: 2px;
-}
-
-.tips-image {
-  margin: 2rem auto;
-  text-align: center;
-  position: relative;
-  width:100%;
-  object-fit: cover;
-}
-
-.tips-image img {
-  max-width:100%;
-  border: 8px solid #fff; /* 写真の白フチ */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* 影 */
-  border-radius: 4px; /* 角を少し丸めると柔らかい */
-  /*transform: rotate(-1.5deg);  ちょっと傾ける */
-  transition: transform 0.3s ease;
-}
-/* マステ（左上） */
-.tips-image::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -12px;
-    width: 80px;
-    height: 20px;
-    background: repeating-linear-gradient(
-    -45deg,              /* ストライプ角度 */
-    #dbc9cdcc 0 6px,       /* ベージュ（背景色と馴染む） */
-    #ffffff 6px 12px     /* 白 */
-  );
-    border-radius: 3px;
-    transform: rotate(330deg);
-    opacity: 0.85;
-    z-index: 1;
-}
-
-/* マステ（右下） */
-.tips-image::after {
-  content: "";
-  position: absolute;
-  bottom: 0px;
-  right: -12px;
-  width: 70px;
-  height: 18px;
-  background: repeating-linear-gradient(
-    -45deg,
-    #dbc9cdcc 0 6px,
-    #ffffff 6px 12px
-  );
-  border-radius: 3px;
-  transform: rotate(330deg);
-  opacity: 0.85;
-}
-
-
-/* ===== 詳細リスト ===== */
-.tips-details {
-  list-style: none;
-  padding: 0;
-  margin: 12px 0;
-}
-
-.tips-details li {
-  display: flex;          /* アイコンとテキストを横並びに */
-  align-items: flex-start;/* テキストが2行になっても上揃え */
-  margin: 6px 0;
-  font-size: 0.95rem;
-  color: rgb(var(--ink));
-}
-
-.tips-details li i {
-    flex: 0 0 20px;
-    color: rgb(var(--wine));
-    margin-right: 0.75rem;
-    text-align: center;
-    margin-top: 0.2rem;
-}
-
-.tips-details li span {
-  flex: 1;                /* 残りのスペースをテキストに割り当て */
-  line-height: 1.5;
-}
-
-/* ===== 備考・周辺情報 ===== */
-.tips-notes, .tips-surroundings {
-    margin-top: 16px;
-    padding: 12px 14px;
-    background: rgb(185 181 177 / 20%);
-    border-radius: 2px;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.08);
-    position: relative;
-    border: 1px solid #ececec;
-    margin: 2.5rem auto;
-}
-
-/* メモの上にテープを貼る */
-.tips-notes::before,
-.tips-surroundings::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-2deg);
-  width: 35%;
-  height: 20px;
-  background: rgba(255,255,255,0.7);
-  border-radius: 4px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-      /* ほぼ透明ベース＋白ドット */
-    background-color: rgba(255, 255, 255, 0.76);
-    background-image: radial-gradient(circle, rgba(223, 220, 220, 0.9) 2px, transparent 2px);
-    background-size: 5px 5px; /* ドットの間隔 */
-}
-
-.tips-notes h4 {
-  margin-bottom: 0.75rem;
-}
-
-.note-group {
-  margin-bottom: 1rem;
-  margin-left: 1.5rem;
-}
-
-.note-group .badge {
-    display: inline-block;
-    margin-bottom: 0.3rem;
-    padding: 5px 1rem;
-}
-
-.note-group ul {
-  list-style: none;
-  margin: 0 0 0.5rem 1rem;
-  padding: 0;
-}
-
-.note-group li {
-  font-size: 0.9rem;
-  color: rgb(var(--ink));
-}
-
-.badge {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: bold;
-  padding: 2px 6px;
-  margin-right: 6px;
-}
-
-/* 無し（グレー） */
-.badge-none   { background: rgba(194, 194, 194, 0.7); }
-/* 部屋（くすみグリーン） */
-.badge-room   { background: rgb(193, 209, 166); }
-/* 共用部（くすみブルー） */
-.badge-shared { background: rgb(231, 190, 163); }
-/* 見出し */
-.tips-notes h4, .tips-surroundings h4 {
-    margin: 1rem 0.5rem;
-    color: #3c5575;
-    font-size: 1.1rem;
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-    position: relative;
-    padding: 0 4px;
-    background: linear-gradient(transparent 60%, rgba(var(--dullblue), 0.3) 60%);
-    font-weight: normal;
-}
-
-/* 本文 */
-.tips-notes p,
-.tips-surroundings ul li {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  margin: 4px 0;
-}
-
-/* ===== 地図 ===== */
-.tips-map {
-  margin-top: 16px;
-  border-radius: 8px;
-  overflow: hidden;
-}
-/* ===== おまけ ===== */
-.tips-extra-card {
-  background: #fff;
-  border-radius: 5px;
-  padding: 16px;
-  margin: 16px 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  position: relative;
-  border: 1px solid #ececec;
-  background-image: 
-    linear-gradient(to right, rgba(241, 241, 241, 0.5) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(241, 241, 241, 0.5)  1px, transparent 1px);
-  background-size: 10px 10px; /* マス目のサイズ */
-}
-
-/* .tips-extra-card::before {
-  content: "";
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-2deg);
-  width: 30%;
-  height: 20px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  opacity: 0.9;
-} */
-
-.tips-extra-card h4 {
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  color: #3c5575;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0 4px;
-  background: linear-gradient(transparent 60%, rgba(122,138,161,0.2) 60%);
-  font-weight: normal;
-}
-
-.tips-extra-card ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.tips-extra-card li {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin: 6px 0;
-  position: relative;
-  padding-left: 16px;
-}
-.tips-extra-card .french {
-  font-size: 0.8rem;
-  color:rgb(114, 110, 100);
-  font-style: italic;
-}
-.tips-extra-card li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: rgba(123,63,74,0.8); /* ワイン系カラーで可愛く */
-}
-
 
 /* =========================================
    PC向け：中央余白レイアウト（768px以上）
