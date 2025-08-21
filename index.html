@@ -56,11 +56,10 @@
     <button class="menu-close" aria-label="メニューを閉じる">× <span>Close</span></button>
     <ul class="menu-list">
       <li class="menu-ttl">Menu</li>
-      <li><a href="#schedule"><i class="fa-solid fa-calendar-days" fa-fw"></i>日程表</a></li>
-      <li><a href="#info"><i class="fa-solid fa-info-circle" fa-fw"></i>情報リスト</a></li>
-      <li><a href="#map"><i class="fa-solid fa-map-location-dot" fa-fw"></i>マップ</a></li>
+      <li><a href="#schedule"><i class="fa-regular fa-calendar-days"></i>日程表</a></li>
+      <li><a href="#info"><i class="fa-solid fa-hotel"></i>ホテルについて</a></li>
       <li><a href="#tips"><i class="fa-solid fa-lightbulb" fa-fw"></i>お役立ち情報</a></li>
-      <li><a href="#contact"><i class="fa-solid fa-envelope" fa-fw"></i> 連絡先</a></li>
+      <li><a href="#flight"><i class="fa-solid fa-plane"></i></i>フライト情報</a></li>
     </ul>
   </div>
 
@@ -83,7 +82,7 @@
     <!-- ===== 旅の概要（カード風） ===== -->
     <section id="overview" class="section">
       <div class="cards overview-cards">
-        <h2 class="fukidashi">カラフルにパリを楽しむ！</h2>
+        <h2 class="fukidashi">カラフルなパリを楽しむ！</h2>
           <span class="card-body">2024年9月29日（日）〜10月5日（土）<br> 5泊7日の旅</span>
 </div>
 
@@ -342,7 +341,7 @@
 </div>
 </section>
 
-<!-- ===== 連絡先 ===== -->
+<!-- ===== 連絡先 ===== 
     <section id="contact" class="section alt">
       <h2 class="section-title"><i class="fa-regular fa-address-book" fa-fw"></i> 連絡先</h2>
       <div class="info-box">
@@ -351,7 +350,7 @@
         <p>フライト：AF293 / AF***</p>
       </div>
     </section>
-    <!-- ===== スポット紹介（カード型） =====
+     ===== スポット紹介（カード型） =====
     <section id="spots" class="section alt">
       <h2 class="section-title"><i class="fa-regular fa-image" fa-fw"></i> スポット紹介</h2>
       <div class="cards spot-cards">
@@ -384,9 +383,32 @@
     </section> -->
 
   </main>
+<footer class="page-footer">
+  <div class="footer-stickers">
 
-  <!-- ===== JS ===== -->
-<!-- <script src="days-data.js"></script>日程データ -->
+    <!-- 丸型 -->
+    <div class="sticker circle">
+      <i class="fa-solid fa-award"></i>
+      <span class="circle-text">Bon Voyage！</span>
+    </div>
+
+    <!-- 四角型 -->
+    <div class="sticker square">
+      <i class="fa-solid fa-suitcase-rolling"></i>
+      <p>PARIS TRIP</p>
+      <small>made by kitsune</small>
+    </div>
+
+    <!-- ダイカット型 -->
+<div class="sticker cutout">
+  <i class="fa-solid fa-plane"></i>
+</div>
+
+</div>
+</footer>
+
+
+<!-- ===== JS読み込み ===== -->
 <script src="script.js" defer></script>
 </body>
 </html>
