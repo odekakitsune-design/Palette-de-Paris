@@ -178,7 +178,7 @@ panel.appendChild(header);
         if (Array.isArray(item.details) && item.details.length) {
           item.details.forEach(d => {
             const li = document.createElement('li');
-            if (typeof d === 'string' && d.trim().startsWith('所要時間')) {
+            if (typeof d === 'string' && d.trim().startsWith('　')) {
               li.innerHTML = `<i class="fa-regular fa-clock"></i>&nbsp;${d}`;
             } else if (typeof d === 'string' && /https?:\/\//.test(d)) {
               li.innerHTML = d.replace(/https?:\/\/\S+/g, url => `<a href="${url}" target="_blank" rel="noopener">${url}</a>`);
@@ -191,7 +191,7 @@ panel.appendChild(header);
           const { duration, url, notes } = item.details;
           if (duration) {
             const li = document.createElement('li');
-            li.innerHTML = `<i class="fa-regular fa-clock"></i>&nbsp;所要時間: ${duration}`;
+            li.innerHTML = `<i class="fa-regular fa-clock"></i>&nbsp;  ${duration}`;
             ul.appendChild(li);
           }
           if (url) {
