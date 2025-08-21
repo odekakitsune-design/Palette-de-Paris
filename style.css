@@ -1360,7 +1360,7 @@ section.timeline-section {
 .sticker.cutout i {
   font-size: 60px;
   -webkit-text-stroke: 3px #fff; /* 白縁 */
-  text-shadow: 3px 4px 5px rgba(0,0,0,0.5); /* 影で貼り付け感 */
+  text-shadow: 2px 3px 6px rgba(0,0,0,0.2); /* 影で貼り付け感 */
   color: rgba(var(--wine, 1));
   transform: rotate(-50deg); /* 本体の色 */
 }
