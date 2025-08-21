@@ -1280,8 +1280,6 @@ section.timeline-section {
     border-radius: 50%;
     width: 90px;
     height: 90px;
-    outline: 4px double;
-    outline-offset: -10px;
     color: #2a6f97;
     position: relative;
     bottom: 25px;
@@ -1306,13 +1304,22 @@ section.timeline-section {
     transform: translate(-50%, -50%);
     line-height: 1;
 }
+.sticker.circle::before {
+    content: "";
+    position: absolute;
+    top: 4px;       /* 内側に入れる距離 */
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 4px double #2a6f97;  /* 内側の二重線 */
+    border-radius: 50%;            /* 親と同じ角丸 */
+    pointer-events: none;          /* 子要素操作の邪魔をしない */
+}
 
 /* 四角ステッカー */
 .sticker.square {
   border-radius: 5px;
   padding: 10px 20px;
-  width: 160px;
-  height: 80px;
   background: rgb(var(--beige));
   position: absolute;
   margin: auto;
@@ -1326,16 +1333,17 @@ section.timeline-section {
 }
 
 .sticker.square p {
-  margin: 4px 0;
-  display: inline-block;
-  width: 80%;
-  font-weight: 600;
-  border: 2px solid ; 
+    margin: 4px auto;
+    display: block;
+    font-weight: 600;
+    border: 2px solid;
+    padding: 2px;
 }
 
 .sticker.square small {
   font-size: 11px;
   color: #777;
+  display: block;
 }
 
 /* ダイカット */
