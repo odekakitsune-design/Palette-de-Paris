@@ -80,12 +80,10 @@ a{
   font-family: 'Meow Script', cursive;
   font-size: 1.6rem;
 }
-.logo img{
-  display: inline-block;
-  width: 3rem;
-  vertical-align: middle;
-  margin-right:1rem ;
-  filter: invert(1)brightness(3);
+.logo img {
+    display: inline-block;
+    width: 4rem;
+    vertical-align: middle;
 }
 .hamburger{
   display:flex;
