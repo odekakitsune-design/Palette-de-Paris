@@ -354,6 +354,65 @@ section#overview {
   margin: 8px 0 16px;
   padding-left: 22px;
 }
+/* =========================================
+   shop情報
+   ========================================= */
+
+/* 全体リスト */
+.shop-list {
+  padding: 0.5rem;
+}
+
+/* 各カード */
+.shop-card {
+  margin: 1rem auto;
+}
+
+/* 店名リンク */
+.shop-name {
+    display: block;
+    font-size: 1rem;
+    color: rgb(var(--dullblue));
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+}
+/* shop-details */
+.shop-details {
+    margin-bottom: 0.5rem;
+
+}
+.shop-details div {
+    display: flex;
+    align-items: baseline;
+    margin-right: 1rem;
+}
+
+.shop-details i {
+  color: rgb(var(--wine));
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+}
+
+/* shop-note（自動クリップアイコン付き） */
+.shop-note {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.shop-note li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.shop-note li::before {
+  left: 0;
+  top: 0.1rem;
+}
+
 
 /* =========================================
    hotelボックス
@@ -785,7 +844,7 @@ section#overview {
   background: #fff;
   border-radius: 5px;
   padding: 16px;
-  margin: 16px 0;
+  margin: 3rem 0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   position: relative;
   border: 1px solid #ececec;
@@ -1231,7 +1290,7 @@ section.timeline-section {
   --cat-spot:   #e2be8e;
   --cat-meal:   #d4b4b4;
   --cat-hotel:  #b8ca98;
-  --cat-check:  #b1b1b1;;
+  --cat-check:  #b1b1b1;
   --cat-other:  #8d4f47;
 }
 
@@ -1246,7 +1305,7 @@ section.timeline-section {
 .icon.meal i   { color: var(--cat-meal); }
 .icon.hotel i  { color: var(--cat-hotel); }
 .icon.spot i   { color: var(--cat-spot); }
-.icon.check i   { color: var(--cat-check); }
+.icon.check i   { color: var(--cat-check); font-size: 1rem;}
 .icon.other i { color:  var(--cat-other); }
 
 /* 上記以外はインク色になる */
