@@ -1222,16 +1222,19 @@ section.timeline-section {
 
 /* アイコンカラー */
 :root {
-  --cat-taxi:   #b3d4da; /* スカイブルー */
-  --cat-bus:    #b3d4da; /* スカイブルー */
-  --cat-train:  #b3d4da; /* スカイブルー */
-  --cat-walk:   #b3d4da; /* スカイブルー */
-  --cat-flight: #a3b6c4; /* グレイッシュブルー */
-  --cat-sight:  #e2b08e; /* テラコッタベージュ */
-  --cat-spot:   #e2b08e; /* テラコッタベージュ */
-  --cat-meal:   #d4b4b4; /* ダスティピンク */
+  --cat-taxi:   #b3d4da;
+  --cat-bus:    #b3d4da;
+  --cat-train:  #b3d4da; 
+  --cat-walk:   #b3d4da; 
+  --cat-flight: #b3d4da; 
+  --cat-departure:#a3b6c4; 
+  --cat-arrival: #a3b6c4; 
+  --cat-sight:  #e2b08e;
+  --cat-spot:   #e2be8e;
+  --cat-meal:   #d4b4b4;
   --cat-hotel:  #b8ca98;
-  --cat-other:  rgb(177, 177, 177); /* ペールグリーン */
+  --cat-check:  #b1b1b1;;
+  --cat-other:  #8d4f47;
 }
 
 .icon.taxi i   { color: var(--cat-taxi); }
@@ -1239,12 +1242,16 @@ section.timeline-section {
 .icon.train i  { color: var(--cat-train); }
 .icon.walk i   { color: var(--cat-walk); }
 .icon.flight i { color: var(--cat-flight); }
+.icon.departure i { color: var(--cat-departure); }
+.icon.arrival i { color: var(--cat-arrival); }
 .icon.sight i  { color: var(--cat-sight); }
 .icon.meal i   { color: var(--cat-meal); }
 .icon.hotel i  { color: var(--cat-hotel); }
 .icon.spot i   { color: var(--cat-spot); }
-.icon.spot i   { color: var(--cat-spot); }
-.icon.other i { color: rgb(177, 177, 177,1); }/* その他はインク色 */
+.icon.check i   { color: var(--cat-check); }
+.icon.other i { color:  var(--cat-other); }
+
+/* 上記以外はインク色になる */
 
 /* パネル内の余白 */
 .panels > .day-panel{

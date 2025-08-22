@@ -136,7 +136,7 @@ panel.appendChild(header);
     /* --- タイムライン --- */
     (day.items || []).forEach(item => {
       const row = document.createElement('div');
-      const moveTypes = ['taxi','bus','train','walk'];
+      const moveTypes = ['taxi','bus','train','walk','flight'];
       row.className = 'timeline' + (moveTypes.includes(item.type) ? ' move' : '');
 
       const time = document.createElement('div');
@@ -153,13 +153,17 @@ panel.appendChild(header);
         train:  'fa-train',
         walk:   'fa-person-walking',
         flight: 'fa-plane',
-        sight:  'fa-landmark',
+        departure:'fa-plane-departure',
+        arrival: 'fa-plane-arrival',
+        sight:  'fa-landmark-flag',
         meal:   'fa-utensils',
         hotel:  'fa-hotel',
-        spot:   'fa-location-dot'
+        spot:   'fa-location-dot',  
+        check: 'fa-check',
+        other:  'fa-question'
       };
       const fa = document.createElement('i');
-      fa.className = `fas ${(item.icon && /^fa-/.test(item.icon)) ? item.icon : (FA_ICON[item.type] || 'fa-check')}`;
+      fa.className = `fas ${(item.icon && /^fa-/.test(item.icon)) ? item.icon : (FA_ICON[item.type] || 'fa-question')}`;
       icon.appendChild(fa);
       row.appendChild(icon);
 
