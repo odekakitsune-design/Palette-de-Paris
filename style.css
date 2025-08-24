@@ -1264,11 +1264,15 @@ section.timeline-section {
 }
 .event ul.details {
     list-style: none;  /* ← これで●が消える */
-    padding-left: 0.8rem;   /* ← インデントも消したい場合 */
+    padding-left: 0.5rem;   /* ← インデントも消したい場合 */
     margin: 0;        /* ← 必要に応じて余白もリセット */
 }
 .event div.title {
     font-size: 0.9rem;
+}
+.title a {
+    color: rgba(var(--ink), 1);
+
 }
 
 .event ul.details li {
