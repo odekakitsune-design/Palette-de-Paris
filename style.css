@@ -1253,11 +1253,13 @@ section.timeline-section {
 /* 移動イベントの備考は liドット無し */
 .timeline.move .event ul.details{
   list-style: none;
+  padding-left: 0.5rem; 
 }
 .timeline.move .event ul.details li {
   list-style: none;
   font-size: 0.8rem;
   color:#8f9c9e;
+  
 }
 .timeline.move .event{
   color:#515e61;
