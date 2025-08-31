@@ -358,7 +358,7 @@ section#overview {
    ========================================= */
 
 /* 全体リスト */
-.shop-list {
+.shop-list { 
   padding: 0.5rem;
 }
 
@@ -1021,6 +1021,73 @@ content: "";
   margin-bottom: 5px;
   color: #999;
 }
+/* ===== 付帯情報 ===== */
+.luggage-tag {
+    position: relative;
+    margin-left: 10%;
+    transform: rotate(5deg);
+}
+/* 穴 */
+.luggagetag-hole {
+    width: 20px;
+    height: 20px;
+    background: rgb(203 203 203 / 25%);
+    border: 4px solid #bfbfbf;
+    border-radius: 50%;
+    position: absolute;
+    left: 8%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+/* ひも（斜めストライプ） */
+.luggagetag-string {
+    width: 4px;
+    height: 65px;
+    position: absolute;
+    left: -5%;
+    top: 30%;
+    background: repeating-linear-gradient(
+    45deg,
+    #e9e0c2,
+    #e9e0c2 4px,
+    #ad6c6c 4px,
+    #ad6c6c 8px
+  );
+    z-index: 2;
+    transform: rotate(85deg);
+}
+.luggagetag-string2 {
+    width: 4px;
+    height: 65px;
+    position: absolute;
+    left: -5%;
+    top: 27%;
+    background: repeating-linear-gradient(
+    45deg,
+    #e9e0c2,
+    #e9e0c2 4px,
+    #ad6c6c 4px,
+    #ad6c6c 8px
+  );
+    z-index: 1;
+    transform: rotate(100deg);
+}
+/* コンテンツ */
+.luggagetag-content {
+  display: inline-block;
+  color: #333;
+      background: #fdfdfd;
+    clip-path: polygon(100% 0, 100% 100%, 15% 100%, 0% 75%, 0% 25%, 15% 0);
+    padding: 1em 1em 1em 18%;
+    margin: 1em 0;
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.15);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    width: 95%;
+}
+
+
 /* =========================================
    持ち物リスト
    ========================================= */
@@ -1172,11 +1239,13 @@ section.timeline-section {
 }
 
 .tag {
-  border-radius: 12px;
-  padding: 0;
-  font-size: .75rem;
-  color: #374151;
-  position: relative;
+    border-radius: 12px;
+    padding: 0;
+    font-size: .75rem;
+    color: #374151;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 /* AM/PMのバッジカラー */
