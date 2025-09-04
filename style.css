@@ -1272,8 +1272,9 @@ section.timeline-section {
 /* --- タイムライン基本--- */
 .timeline {
     display: grid;
-    grid-template-columns: 45px 34px 1fr;
-    column-gap: 10px;
+    align-items: baseline;
+    grid-template-columns: 55px 34px 1fr;
+    column-gap: 7px;
     margin: 0;
     padding: 12px 0;
     border-bottom: 1px solid #e2e2e2;
@@ -1292,7 +1293,6 @@ section.timeline-section {
   content: none;
 }
 .timeline.move .icon {
-  text-align: left;
   margin-left: 10px; 
 }
 /* === 移動イベント === */
@@ -1304,7 +1304,7 @@ section.timeline-section {
 .timeline.move::before {
     content: "";
     position: absolute;
-    left: 72px;
+    left: 78px;
     top: 10%;
     bottom: 0;
     width: 0;
@@ -1362,6 +1362,7 @@ section.timeline-section {
   --cat-arrival: #a3b6c4; 
   --cat-sight:  #e2b08e;
   --cat-spot:   #e2be8e;
+  --cat-free:  #bbb8a5;
   --cat-meal:   #d4b4b4;
   --cat-hotel:  #b8ca98;
   --cat-check:  #b1b1b1;
@@ -1379,6 +1380,7 @@ section.timeline-section {
 .icon.meal i   { color: var(--cat-meal); }
 .icon.hotel i  { color: var(--cat-hotel); }
 .icon.spot i   { color: var(--cat-spot); }
+.icon.free i   { color: var(--cat-free); }
 .icon.check i   { color: var(--cat-check); font-size: 1rem;}
 .icon.other i { color:  var(--cat-other); }
 

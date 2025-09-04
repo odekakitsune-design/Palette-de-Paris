@@ -160,6 +160,7 @@ panel.appendChild(header);
         hotel:  'fa-hotel',
         spot:   'fa-location-dot',  
         check: 'fa-check',
+        free:  'fa-solid fa-flag',
         other:  'fa-question'
       };
       const fa = document.createElement('i');
